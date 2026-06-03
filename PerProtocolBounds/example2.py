@@ -19,9 +19,8 @@ warnings.simplefilter('ignore', RuntimeWarning)
 
 columns = ["id", "male", "black", "hispanic", "idu", "art", "d", "drop", "r", "age", "karnof", "days", "cd4",
            "stop", "t", "delta"]
-d = pd.read_csv("data/actg320.dat", sep='\s+', names=columns)
+d = pd.read_csv("data/actg320.dat", sep=r'\s+', names=columns)
 d = d[['id', 'art', 'stop', 't', 'delta']].copy()
-
 
 #########################################################################
 # Defining some helper functions
