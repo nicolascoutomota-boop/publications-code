@@ -37,13 +37,14 @@ class PooledLogitGComputation:
     verbose : bool, optional
         Whether to print intermediate model results to the console. Default is False, which runs quietly.
     """
-    def __init__(self, data, exposure, time, delta, resolution=None, alpha=0.05, verbose=False):
+    def __init__(self, data, exposure, time, delta, weight=None, resolution=None, alpha=0.05, verbose=False):
         self.exposure = exposure     # Exposure variable (to flip for the parameters)
         self.time = time             # Time variable
         self.delta = delta           # Delta (event indicator) variable, with T=T^* -> 1, else 0
+        self.weight = weight         # Delta (event indicator) variable, with T=T^* -> 1, else 0
         self.idvar = "__id_var__"    # Create a unique ID variable (used in extension to long data frame)
 
-        # Set resolution of the time scale (in how much a row corresponds to)
+        # Set resolution of the time-scale (in how much a row corresponds to)
         if resolution is None:                                # If None, time consists of 100 unique intervals
             self.resolution = np.max(data[self.time]) / 100
         else:                                                 # Otherwise, use the set resolution provided by user
@@ -75,6 +76,7 @@ class PooledLogitGComputation:
         self._tspline_rstd_ = None           # restricted time splines
         self._tspline_nknots_ = None         # number of knots in time splines
         self._tspline_knots_ = None          # knot locations of time splines
+        self.bootstrap_method = None         # Method for bootstrap
 
     def create_time_splines(self, knots, term=3, restricted=True):
         """Function to generate spline terms for the time column.
@@ -141,24 +143,34 @@ class PooledLogitGComputation:
         # Restrict data to only observed times
         data_to_fit = self.long_data.loc[self.long_data[self.delta].notna()].copy()
 
+        # Handling weights
+        if self.weight is None:
+            weight = np.ones(data_to_fit.shape[0])
+        else:
+            weight = data_to_fit[self.weight]
+
         # Estimate the GLM
         f = sm.families.family.Binomial()                              # Specify logistic family GLM
         self.fit_pooled_logit = smf.glm(self.delta + " ~ " + model,    # Nuisance model form
                                         data=data_to_fit,              # Long dataframe restricted to valid obs
-                                        family=f).fit()                # Logistic GLM
+                                        family=f,                      # Logistic GLM
+                                        freq_weights=weight).fit()     # Weights as specified
         self._model_specification_ = model
 
         # Returning model fit details if verbose if specified
         if self._verbose_:
             print(self.fit_pooled_logit.summary())
 
-    def estimate(self, bs_iterations=200, seed=None, n_cpus=1):
+    def estimate(self, bs_iterations=200, bs_method='frw', seed=None, n_cpus=1):
         """Estimate the risk function via g-computation under the specified policy.
 
         Parameters
         ----------
         bs_iterations : int, optional
             Number of bootstraps to resample to estimate the variance. Default is 200 resamples.
+        bs_method : str, optional
+            Bootstrap method to use. Default is Fractional Random Weight (FRW) bootstrap. Alternatively can request
+            the re-sampling based bootstrap
         seed : int, None, optional
             Random seed for generation of the bootstrapped samples.
         n_cpus : int, optional
@@ -168,6 +180,7 @@ class PooledLogitGComputation:
         # Running point estimation procedure (detailed in point_estimate)
         psi = self.point_estimate()                      # Parameter of interest
         # Running variance estimation procedure (detailed in variance_bootstrap)
+        self.bootstrap_method = bs_method
         var_psi = self.variance_bootstrap(bs_iterations=bs_iterations,      # Number of bootstrapped samples
                                           seed=seed,                        # Seed for consistent bootstraps
                                           n_cpus=n_cpus)                    # Number of CPU in multiprocessing.Pool
@@ -205,7 +218,7 @@ class PooledLogitGComputation:
                            "RD": 0,
                            }, index=[0])
         dz.index.name = self.time                                    # Sets time as index for t=0 row
-        return dz.append(d)                                          # appends zero data then returns
+        return pd.concat([dz, d], ignore_index=False)                # appends zero data then returns
 
     def variance_bootstrap(self, bs_iterations=200, seed=None, n_cpus=1):
         """Bootstrap-based estimator of the variance for the parameter(s) of interest. The input data set is resampled
@@ -227,18 +240,32 @@ class PooledLogitGComputation:
         n = self.data.shape[0]                  # Number of observations in the data set
         rng = np.random.default_rng(seed)       # Setting the seed for bootstraps
 
-        params = [[self.data,                                                         # resampled data
-                   rng.choice(n, size=n, replace=True),                               # Indices to pull
-                   self.exposure, self.time, self.delta, self.resolution, False,      # class object inits
-                   self._tspline_called_, self._tspline_term_, self._tspline_rstd_,   # time splines
-                   self._tspline_nknots_, self._tspline_knots_,                       # ...rest of time splines
-                   self._model_specification_,                                        # outcome_model()
-                   ] for i in range(bs_iterations)]                                   # iterations
-
-        # Using pool to multiprocess the bootstrapping procedure
-        with Pool(processes=n_cpus) as pool:
-            bsd = list(pool.map(_bootstrap_single_iter_pooledgcomputation_,  # Call outside function to run parallel
-                                params))                                     # provide packed input list
+        if self.bootstrap_method == 'frw':
+            params = [[self.data,                                                         # resampled data
+                       rng.exponential(size=n),                                           # Assigned weights
+                       self.exposure, self.time, self.delta, self.weight, self.resolution,
+                       False,                                                             # class object inits
+                       self._tspline_called_, self._tspline_term_, self._tspline_rstd_,   # time splines
+                       self._tspline_nknots_, self._tspline_knots_,                       # ...rest of time splines
+                       self._model_specification_,                                        # outcome_model()
+                       ] for i in range(bs_iterations)]                                   # iterations
+            # Using pool to multiprocess the bootstrapping procedure
+            with Pool(processes=n_cpus) as pool:
+                bsd = list(pool.map(_bootstrap_single_frw_pooledgcomputation_,  # Call outside function to run parallel
+                                    params))  # provide packed input list
+        else:
+            params = [[self.data,                                                         # resampled data
+                       rng.choice(n, size=n, replace=True),                               # Indices to pull
+                       self.exposure, self.time, self.delta, self.weight, self.resolution,
+                       False,                                                             # class object inits
+                       self._tspline_called_, self._tspline_term_, self._tspline_rstd_,   # time splines
+                       self._tspline_nknots_, self._tspline_knots_,                       # ...rest of time splines
+                       self._model_specification_,                                        # outcome_model()
+                       ] for i in range(bs_iterations)]                                   # iterations
+            # Using pool to multiprocess the bootstrapping procedure
+            with Pool(processes=n_cpus) as pool:
+                bsd = list(pool.map(_bootstrap_single_iter_pooledgcomputation_,  # Call outside function to run parallel
+                                    params))                                     # provide packed input list
 
         # Processing bootstrapped samples
         cols = bsd[0].columns                            # Pull out the column names from the first bootstrap data set
@@ -287,7 +314,13 @@ class PooledLogitGComputation:
                              "' but only the following options "
                              "are supported: risk, "
                              "survival, and hazard.")
-        return long_data_est.groupby(self.time)['_pred_'].mean()   # then take mean by time variable
+        if self.weight is None:
+            output = long_data_est.groupby(self.time)['_pred_'].mean()
+        else:
+            long_data_est['_predw_'] = long_data_est['_pred_'] * long_data_est[self.weight]
+            grouped_by = long_data_est.groupby(self.time)
+            output = grouped_by['_predw_'].sum() / grouped_by[self.weight].sum()
+        return output
 
     def _convert_to_long_data_(self):
         max_t = np.max(self.data[self.time])
@@ -317,7 +350,7 @@ def _bootstrap_single_iter_pooledgcomputation_(params):
         everything to a copied version of the BreslowGComputation call.
     """
     (data, sample_index,                                  # Unpack the list of input params to pass to BreslowGComp
-     exposure, time, delta, resolution, verbose,
+     exposure, time, delta, weight, resolution, verbose,
      t_spline, t_spline_term, t_spline_rstd,
      t_spline_nk, t_spline_k,
      model_spec, ) = params
@@ -327,6 +360,53 @@ def _bootstrap_single_iter_pooledgcomputation_(params):
                                              exposure=exposure,                     # Original exposure value
                                              time=time,                             # Original time value
                                              delta=delta,                           # Original delta value
+                                             weight=weight,                         # Original delta value
+                                             resolution=resolution,                 # Resolution
+                                             verbose=verbose)                       # ALWAYS suppresses verbose here
+    # Creating time splines (if done in outer estimator)
+    if t_spline:
+        estimator_copy.create_time_splines(term=t_spline_term,                      # Create spline with term
+                                           restricted=t_spline_rstd,                # ...(un)restricted
+                                           knots=t_spline_k)                        # ...knots at x
+    # Estimate the same outcome model on resampled data
+    estimator_copy.outcome_model(model=model_spec)                                 # Original model specification
+    # Estimate the point estimate for the resampled data
+    x = estimator_copy.point_estimate()                                            # Original parameter of interest
+    # Return the point estimates for the particular resample (gets stacked in a list later)
+    return x
+
+
+def _bootstrap_single_frw_pooledgcomputation_(params):
+    """Function for BreslowGComputation bootstrapping procedure. This function allows for the bootstrapping iterations
+    to be run via Pool, since the function needs to be outside the class for multiprocessing to copy instances
+    correctly to each .
+
+    This is only meant as a background function to be called for bootstrapping procedures
+
+    Parameters
+    ----------
+    params : list
+        Packed list of the parameters to be passed to the Pool. The first step expands this out and then passes
+        everything to a copied version of the BreslowGComputation call.
+    """
+    (data, fr_weight,                                  # Unpack the list of input params to pass to BreslowGComp
+     exposure, time, delta, weight, resolution, verbose,
+     t_spline, t_spline_term, t_spline_rstd,
+     t_spline_nk, t_spline_k,
+     model_spec, ) = params
+
+    # Setting up the FRW
+    if weight is None:
+        data['frweight'] = fr_weight
+    else:
+        data['frweight'] = data[weight] * fr_weight
+
+    # Create a fresh class of the PooledLogitGComputation class with the resample data
+    estimator_copy = PooledLogitGComputation(data=data,                             # Select out the resample via index
+                                             exposure=exposure,                     # Original exposure value
+                                             time=time,                             # Original time value
+                                             delta=delta,                           # Original delta value
+                                             weight='frweight',                     # Original delta value
                                              resolution=resolution,                 # Resolution
                                              verbose=verbose)                       # ALWAYS suppresses verbose here
     # Creating time splines (if done in outer estimator)

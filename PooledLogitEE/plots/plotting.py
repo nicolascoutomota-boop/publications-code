@@ -55,7 +55,6 @@ def twister_plot(data, point, lcl, ucl, time, color='k', reference_line=0.0, log
 
     >>> import numpy as np
     >>> import pandas as pd
-    >>> from condatanser.plots import twister_plot
 
     Generating a twister plot
 

@@ -2,7 +2,7 @@
 # Code for time-trials with data from Collett
 #   Results for the run times are provided as a comment at the end
 #
-# Paul Zivich (Last update: 2025/4/17)
+# Paul Zivich (Last update: 2026/2/25)
 ######################################################################################################################
 
 import warnings
@@ -10,10 +10,10 @@ import numpy as np
 import pandas as pd
 from time import time
 from delicatessen import MEstimator
-from delicatessen.utilities import spline
+from delicatessen.estimating_equations import ee_plogit
+from delicatessen.utilities import spline, plogit_predict
 
 from standard import PooledLogitGComputation
-from efuncs import ee_pooled_logit, pooled_logit_prediction
 
 warnings.filterwarnings("ignore")
 
@@ -21,7 +21,7 @@ warnings.filterwarnings("ignore")
 if __name__ == "__main__":
     #########################################################################
     # Setup data
-    d = pd.read_csv("../data/collett.dat", sep='\s+',
+    d = pd.read_csv("../data/collett.dat", sep=r'\s+',
                     names=['patient', 'time', 'delta', 'treat', 'init', 'size'])
     d['novel'] = d['treat'] - 1
     d['intercept'] = 1
@@ -52,12 +52,12 @@ if __name__ == "__main__":
     params_plr_a0 = len(event_times_a0)
 
     def psi_plogit_a1(theta):
-        ee_plog = ee_pooled_logit(theta, t=t, delta=y, X=W, unique_times=event_times_a1)
+        ee_plog = ee_plogit(theta, t=t, delta=y, X=W, unique_times=event_times_a1)
         ee_plog = ee_plog * (a == 1)[None, :]
         return ee_plog
 
     def psi_plogit_a0(theta):
-        ee_plog = ee_pooled_logit(theta, t=t, delta=y, X=W, unique_times=event_times_a0)
+        ee_plog = ee_plogit(theta, t=t, delta=y, X=W, unique_times=event_times_a0)
         ee_plog = ee_plog * (a == 0)[None, :]
         return ee_plog
 
@@ -73,10 +73,10 @@ if __name__ == "__main__":
         ee_plog0 = psi_plogit_a0(theta=beta0)
 
         # Predictions to get risk differences
-        risk1 = pooled_logit_prediction(theta=beta1, delta=y, t=t, X=W,
-                                        times_to_predict=event_times, measure='risk', unique_times=event_times_a1)
-        risk0 = pooled_logit_prediction(theta=beta0, delta=y, t=t, X=W,
-                                        times_to_predict=event_times, measure='risk', unique_times=event_times_a0)
+        risk1 = plogit_predict(theta=beta1, delta=y, t=t, X=W,
+                               times_to_predict=event_times, measure='risk', unique_times=event_times_a1)
+        risk0 = plogit_predict(theta=beta0, delta=y, t=t, X=W,
+                               times_to_predict=event_times, measure='risk', unique_times=event_times_a0)
         ee_rd = (risk1 - risk0) - np.asarray(rds)[:, None]
 
         # Returning stacked estimating equations
@@ -96,13 +96,13 @@ if __name__ == "__main__":
     print("RUNTIME:", np.median(run_times))
     print(run_times)
 
-    print("Standard -- 1 CPU")
+    # print("Standard -- 1 CPU")
     run_times = []
     for i in range(5):
         start = time()
         plgc = PooledLogitGComputation(data=d, exposure='novel', time='time', delta='delta', verbose=False)
         plgc.outcome_model(model='novel*(init + size + C(time))')
-        results = plgc.estimate(n_cpus=1, bs_iterations=1000, seed=80921)
+        results = plgc.estimate(n_cpus=1, bs_iterations=1000, bs_method='frw', seed=80921)
         run_times.append(time() - start)
 
     print(results[['RD', 'Var_RD', 'LCL_RD', 'UCL_RD']].tail(1))
@@ -115,7 +115,7 @@ if __name__ == "__main__":
         start = time()
         plgc = PooledLogitGComputation(data=d, exposure='novel', time='time', delta='delta', verbose=False)
         plgc.outcome_model(model='novel*(init + size + C(time))')
-        results = plgc.estimate(n_cpus=7, bs_iterations=1000, seed=80921)
+        results = plgc.estimate(n_cpus=7, bs_iterations=1000, bs_method='frw', seed=80921)
         run_times.append(time() - start)
 
     print(results[['RD', 'Var_RD', 'LCL_RD', 'UCL_RD']].tail(1))
@@ -136,17 +136,12 @@ if __name__ == "__main__":
     s_matrix = np.concatenate([intercept, t_steps[:, None], time_splines], axis=1)
 
     def psi_plogit_spline_a1(theta):
-        ee_plog = ee_pooled_logit(theta=theta, t=t, delta=y, X=W, S=s_matrix)
-        ee_plog = ee_plog * (a == 1)[None, :]
-        return ee_plog
-
-    def psi_plogit_spline_a1w(theta):
-        ee_plog = ee_pooled_logit(theta=theta, t=t, delta=y, X=W, S=s_matrix)
+        ee_plog = ee_plogit(theta=theta, t=t, delta=y, X=W, S=s_matrix)
         ee_plog = ee_plog * (a == 1)[None, :]
         return ee_plog
 
     def psi_plogit_spline_a0(theta):
-        ee_plog = ee_pooled_logit(theta=theta, t=t, delta=y, X=W, S=s_matrix)
+        ee_plog = ee_plogit(theta=theta, t=t, delta=y, X=W, S=s_matrix)
         ee_plog = ee_plog * (a == 0)[None, :]
         return ee_plog
 
@@ -162,10 +157,10 @@ if __name__ == "__main__":
         ee_plog0 = psi_plogit_spline_a0(theta=beta0)
 
         # Predictions to get risk differences
-        risk1 = pooled_logit_prediction(theta=beta1, t=t, delta=y, X=W, S=s_matrix,
-                                        times_to_predict=tp_intervals, measure='risk')
-        risk0 = pooled_logit_prediction(theta=beta0, t=t, delta=y, X=W, S=s_matrix,
-                                        times_to_predict=tp_intervals, measure='risk')
+        risk1 = plogit_predict(theta=beta1, t=t, delta=y, X=W, S=s_matrix,
+                               times_to_predict=tp_intervals, measure='risk')
+        risk0 = plogit_predict(theta=beta0, t=t, delta=y, X=W, S=s_matrix,
+                               times_to_predict=tp_intervals, measure='risk')
         ee_rd = (risk1 - risk0) - np.asarray(risks)[:, None]
 
         # Returning stacked estimating equations
@@ -190,7 +185,7 @@ if __name__ == "__main__":
         plgc = PooledLogitGComputation(data=d, exposure='novel', time='time', delta='delta', verbose=False)
         plgc.create_time_splines(term=2, knots=[10, 20, 30, 40])
         plgc.outcome_model(model='novel*(init + size + time + time_spline1 + time_spline2 + time_spline3)')
-        results = plgc.estimate(n_cpus=1, bs_iterations=1000, seed=80921)
+        results = plgc.estimate(n_cpus=1, bs_iterations=1000, bs_method='frw', seed=80921)
         run_times.append(time() - start)
 
     print(results[['RD', 'Var_RD', 'LCL_RD', 'UCL_RD']].tail(1))
@@ -204,7 +199,7 @@ if __name__ == "__main__":
         plgc = PooledLogitGComputation(data=d, exposure='novel', time='time', delta='delta', verbose=False)
         plgc.create_time_splines(term=2, knots=[10, 20, 30, 40])
         plgc.outcome_model(model='novel*(init + size + time + time_spline1 + time_spline2 + time_spline3)')
-        results = plgc.estimate(n_cpus=7, bs_iterations=1000, seed=80921)
+        results = plgc.estimate(n_cpus=7, bs_iterations=1000, bs_method='frw', seed=80921)
         run_times.append(time() - start)
 
     print(results[['RD', 'Var_RD', 'LCL_RD', 'UCL_RD']].tail(1))
@@ -215,39 +210,34 @@ if __name__ == "__main__":
 # DISJOINT INDICATOR
 #
 # EE implementation
-# RUNTIME: 0.31212353706359863
-# [0.3223865032196045, 0.31229472160339355, 0.31212353706359863, 0.30949902534484863, 0.3105039596557617]
-#
-# Standard -- 1 CPU
+# RUNTIME: 0.19350552558898926
+# [0.19215178489685059, 0.19582605361938477, 0.19156789779663086, 0.19350552558898926, 0.19875168800354004]
 #             RD    Var_RD    LCL_RD    UCL_RD
 # time
-# 59   -0.189233  0.025134 -0.499957  0.121492
-# RUNTIME: 498.0906629562378
-# [482.8437101840973, 498.0906629562378, 496.69061183929443, 507.8601903915405, 498.8793394565582]
-#
+# 59   -0.189233  0.013719 -0.418799  0.040334
+# RUNTIME: 708.8876039981842
+# [580.8338131904602, 709.38179063797, 719.883208990097, 708.8876039981842, 566.2731094360352]
 # Standard -- 7 CPU
 #             RD    Var_RD    LCL_RD    UCL_RD
 # time
-# 59   -0.189233  0.025134 -0.499957  0.121492
-# RUNTIME: 185.51739645004272
-# 181.0094289779663 200.1832308769226
+# 59   -0.189233  0.013719 -0.418799  0.040334
+# RUNTIME: 105.97134113311768
+# 104.51006627082825 106.68051552772522
 #
 # SPLINES
 #
 # EE implementation
-# RUNTIME: 1.1790900707244873
-# [1.212967872619629, 1.1218619346618652, 1.2318201065063477, 1.1726322174072266, 1.1561682224273682]
-#
+# RUNTIME: 0.7068254947662354
+# [0.7460260391235352, 0.7252283096313477, 0.6905961036682129, 0.6862847805023193, 0.6859922409057617]
 # Standard -- 1 CPU
 #             RD    Var_RD    LCL_RD    UCL_RD
 # time
-# 59   -0.177775  0.020096 -0.455622  0.100072
-# RUNTIME: 48.83258891105652
-# [49.10842537879944, 48.780088663101196, 48.83258891105652, 48.85434126853943, 48.61756992340088]
-#
+# 59   -0.177775  0.015182 -0.419274  0.063724
+# RUNTIME: 22.928261756896973
+# [22.94381809234619, 22.928261756896973, 22.950029611587524, 22.85137915611267, 22.635519981384277]
 # Standard -- 7 CPU
 #             RD    Var_RD    LCL_RD    UCL_RD
 # time
-# 59   -0.177775  0.020096 -0.455622  0.100072
-# RUNTIME: 15.87848949432373
-# [15.370906352996826, 15.87848949432373, 15.961869955062866, 15.874207019805908, 16.127304553985596]
+# 59   -0.177775  0.015182 -0.419274  0.063724
+# RUNTIME: 6.67903995513916
+# [6.684532403945923, 6.67903995513916, 6.605347156524658, 6.664432764053345, 6.8646087646484375]

@@ -2,7 +2,7 @@
 # Code to run the simulation experiments
 #   Results are shown as comments at the end
 #
-# Paul Zivich (Last update: 2025/4/17)
+# Paul Zivich (Last update: 2026/2/24)
 ######################################################################################################################
 
 import numpy as np
@@ -11,99 +11,52 @@ import pandas as pd
 from dgm import dgm
 from estimators import PooledLogitEE
 
-np.random.seed(338092421)
-
+# Setup for simulation
 runs = 5000
-n_obs = 250
+n_obs = 2000
+np.random.seed(338092421 - 250 + n_obs)
 
+# Loading the truth values (calculated separately)
 truth = pd.read_csv("truth.csv")
 truth = np.asarray(truth['KM_estimate'])
-true_10, true_20, true_30 = truth
+true_5, true_10, true_15, true_20, true_25, true_30 = truth
 
-results_10, results_20, results_30 = [], [], []
+# Storage for results at each time
+results_5, results_10, results_15, results_20, results_25, results_30 = [], [], [], [], [], []
+
 for i in range(runs):
     print("...starting", i+1)
-    result10_row, result20_row, result30_row = [], [], []
+    result5_row, result10_row, result15_row, result20_row, result25_row, result30_row = [], [], [], [], [], []
     d = dgm(n=n_obs, truth=False)
 
-    # Pooled Logit Exponential
-    try:
-        plee = PooledLogitEE(data=d, time='T_star', delta='delta', action='A')
-        plee.nuisance_model(covariates=['W', 'W_sp1', 'W_sp2'], time='constant')
-        plee.estimate()
-        for j in [plee.point, plee.variance, plee.lower_ci, plee.upper_ci]:
-            result10_row.append(j[0])
-            result20_row.append(j[1])
-            result30_row.append(j[2])
-    except:
-        for j in [1, 2, 3, 4]:
-            result10_row.append(np.nan)
-            result20_row.append(np.nan)
-            result30_row.append(np.nan)
-
-    # Pooled Logit Gompertz
-    try:
-        plee = PooledLogitEE(data=d, time='T_star', delta='delta', action='A')
-        plee.nuisance_model(covariates=['W', 'W_sp1', 'W_sp2'], time='linear')
-        plee.estimate()
-        for j in [plee.point, plee.variance, plee.lower_ci, plee.upper_ci]:
-            result10_row.append(j[0])
-            result20_row.append(j[1])
-            result30_row.append(j[2])
-    except:
-        for j in [1, 2, 3, 4]:
-            result10_row.append(np.nan)
-            result20_row.append(np.nan)
-            result30_row.append(np.nan)
-
-    # Pooled Logit Weibull
-    try:
-        plee = PooledLogitEE(data=d, time='T_star', delta='delta', action='A')
-        plee.nuisance_model(covariates=['W', 'W_sp1', 'W_sp2'], time='log')
-        plee.estimate()
-        for j in [plee.point, plee.variance, plee.lower_ci, plee.upper_ci]:
-            result10_row.append(j[0])
-            result20_row.append(j[1])
-            result30_row.append(j[2])
-    except:
-        for j in [1, 2, 3, 4]:
-            result10_row.append(np.nan)
-            result20_row.append(np.nan)
-            result30_row.append(np.nan)
-
-    # Pooled Logit Splines
-    try:
-        plee = PooledLogitEE(data=d, time='T_star', delta='delta', action='A')
-        plee.nuisance_model(covariates=['W', 'W_sp1', 'W_sp2'], time='spline')
-        plee.estimate()
-        for j in [plee.point, plee.variance, plee.lower_ci, plee.upper_ci]:
-            result10_row.append(j[0])
-            result20_row.append(j[1])
-            result30_row.append(j[2])
-    except:
-        for j in [1, 2, 3, 4]:
-            result10_row.append(np.nan)
-            result20_row.append(np.nan)
-            result30_row.append(np.nan)
-
-    # Pooled Logit Disjoint
-    try:
-        plee = PooledLogitEE(data=d, time='T_star', delta='delta', action='A')
-        plee.nuisance_model(covariates=['W', 'W_sp1', 'W_sp2'], time='disjoint')
-        plee.estimate()
-        for j in [plee.point, plee.variance, plee.lower_ci, plee.upper_ci]:
-            result10_row.append(j[0])
-            result20_row.append(j[1])
-            result30_row.append(j[2])
-    except:
-        for j in [1, 2, 3, 4]:
-            result10_row.append(np.nan)
-            result20_row.append(np.nan)
-            result30_row.append(np.nan)
+    # Pooled Logit Specifications: Exponential, Gompertz, Weibull, splines, disjoint
+    for funcform_time in ['constant', 'linear', 'log', 'spline', 'disjoint']:
+        try:
+            plee = PooledLogitEE(data=d, time='T_star', delta='delta', action='A')
+            plee.nuisance_model(covariates=['W', 'W_sp1', 'W_sp2'], time=funcform_time)
+            plee.estimate()
+            for j in [plee.point, plee.variance, plee.lower_ci, plee.upper_ci]:
+                result5_row.append(j[0])
+                result10_row.append(j[1])
+                result15_row.append(j[2])
+                result20_row.append(j[3])
+                result25_row.append(j[4])
+                result30_row.append(j[5])
+        except:
+            for j in [1, 2, 3, 4]:
+                result5_row.append(np.nan)
+                result10_row.append(np.nan)
+                result15_row.append(np.nan)
+                result20_row.append(np.nan)
+                result25_row.append(np.nan)
+                result30_row.append(np.nan)
 
     # Adding the new rows
+    results_5.append(result5_row)
     results_10.append(result10_row)
+    results_15.append(result15_row)
     results_20.append(result20_row)
+    results_25.append(result25_row)
     results_30.append(result30_row)
 
 
@@ -113,7 +66,9 @@ columns = []
 for ec in estr_cols:
     columns = columns + [ec + "_" + c for c in metric_cols]
 
-for end_time, results_t, truth in zip([10, 20, 30], [results_10, results_20, results_30], [true_10, true_20, true_30]):
+for end_time, results_t, truth in zip([5, 10, 15, 20, 25, 30],
+                                      [results_5 ,results_10, results_15, results_20, results_25, results_30],
+                                      [true_5, true_10, true_15, true_20, true_25, true_30]):
     results = pd.DataFrame(results_t, columns=columns)
     for estimator in estr_cols:
         results[estimator+'_b'] = results[estimator+'_p'] - truth
@@ -122,33 +77,47 @@ for end_time, results_t, truth in zip([10, 20, 30], [results_10, results_20, res
                                            1, 0)
 
     # Saving simulations output
-    results.to_csv("sim_t"+str(end_time)+"_n"+str(n_obs)+".csv")
+    results.to_csv("results/sim_t"+str(end_time)+"_n"+str(n_obs)+".csv")
 
 
-# N = 250
-#              Bias     ESE       SER    RMSE Coverage MISS-Bias
-# Estimator
-# ple        -0.070   0.040     0.983   0.080    0.552     0.000
-# plg         0.002   0.047     0.982   0.047    0.943     0.000
-# plw         0.005   0.046     0.971   0.046    0.939     0.000
-# pls        -0.002   0.050     0.983   0.050    0.938    15.000
-# pld         0.000   0.051     0.987   0.051    0.946     0.000
-#
-#              Bias     ESE       SER    RMSE Coverage MISS-Bias
-# Estimator
-# ple        -0.013   0.064     0.982   0.065    0.935     0.000
-# plg         0.021   0.064     0.977   0.067    0.930     0.000
-# plw         0.003   0.063     0.976   0.063    0.940     0.000
-# pls        -0.001   0.070     0.988   0.070    0.944    15.000
-# pld        -0.001   0.071     0.986   0.071    0.946     0.000
-#
-#              Bias     ESE       SER    RMSE Coverage MISS-Bias
-# Estimator
-# ple         0.069   0.079     0.979   0.105    0.843     0.000
-# plg        -0.007   0.085     0.984   0.085    0.942     0.000
-# plw        -0.005   0.084     0.985   0.084    0.941     0.000
-# pls        -0.001   0.085     0.982   0.085    0.938    15.000
-# pld        -0.001   0.085     0.981   0.085    0.941     0.000
+# N=250
+#          Bias    ESE    SER Coverage
+# ple    -0.070  0.023  0.979    0.139
+# plg    -0.016  0.032  0.986    0.887
+# plw     0.002  0.034  0.977    0.937
+# pls     0.006  0.036  0.966    0.935
+# pld     0.001  0.038  0.968    0.939
+#          Bias    ESE    SER Coverage
+# ple    -0.070  0.040  0.983    0.552
+# plg     0.002  0.047  0.982    0.943
+# plw     0.005  0.046  0.971    0.939
+# pls    -0.002  0.050  0.983    0.938
+# pld     0.000  0.051  0.987    0.946
+#          Bias    ESE    SER Coverage
+# ple    -0.047  0.053  0.983    0.835
+# plg     0.016  0.057  0.978    0.934
+# plw     0.005  0.055  0.972    0.937
+# pls    -0.000  0.060  0.996    0.942
+# pld    -0.001  0.062  0.992    0.945
+#          Bias    ESE    SER Coverage
+# ple    -0.013  0.064  0.982    0.935
+# plg     0.021  0.064  0.977    0.930
+# plw     0.003  0.063  0.976    0.940
+# pls    -0.001  0.070  0.988    0.944
+# pld    -0.001  0.071  0.986    0.946
+#          Bias    ESE    SER Coverage
+# ple     0.027  0.072  0.981    0.926
+# plg     0.013  0.073  0.979    0.938
+# plw    -0.001  0.073  0.981    0.942
+# pls    -0.001  0.077  0.984    0.939
+# pld    -0.001  0.079  0.984    0.942
+#          Bias    ESE    SER Coverage
+# ple     0.069  0.079  0.979    0.843
+# plg    -0.007  0.085  0.984    0.942
+# plw    -0.005  0.084  0.985    0.941
+# pls    -0.001  0.085  0.982    0.938
+# pld    -0.001  0.085  0.981    0.941
+
 
 # N = 500
 #              Bias    ESE    SER   RMSE Coverage MISS-Bias

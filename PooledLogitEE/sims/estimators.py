@@ -6,9 +6,8 @@
 
 import numpy as np
 from delicatessen import MEstimator
-from delicatessen.utilities import spline
-
-from efuncs import ee_pooled_logit, pooled_logit_prediction
+from delicatessen.estimating_equations import ee_plogit
+from delicatessen.utilities import spline, plogit_predict
 
 
 class PooledLogitEE:
@@ -71,26 +70,26 @@ class PooledLogitEE:
             raise ValueError("nuisance_model() must be called before estimate()")
 
         def psi_plogit_a1(theta):
-            ee_plog = ee_pooled_logit(theta=theta,
-                                      t=self.data[self.time], delta=self.data[self.delta],
-                                      X=self.x_matrix, S=self.pregen_matrix,
-                                      unique_times=self.unique_event_times_a1)
+            ee_plog = ee_plogit(theta=theta,
+                                t=self.data[self.time], delta=self.data[self.delta],
+                                X=self.x_matrix, S=self.pregen_matrix,
+                                unique_times=self.unique_event_times_a1)
             ee_plog = ee_plog * np.asarray(self.data[self.action] == 1)[None, :]
             return ee_plog
 
         def psi_plogit_a0(theta):
-            ee_plog = ee_pooled_logit(theta=theta,
-                                      t=self.data[self.time], delta=self.data[self.delta],
-                                      X=self.x_matrix, S=self.pregen_matrix,
-                                      unique_times=self.unique_event_times_a0)
+            ee_plog = ee_plogit(theta=theta,
+                                t=self.data[self.time], delta=self.data[self.delta],
+                                X=self.x_matrix, S=self.pregen_matrix,
+                                unique_times=self.unique_event_times_a0)
             ee_plog = ee_plog * np.asarray(self.data[self.action] == 0)[None, :]
             return ee_plog
 
         def psi_rd(theta):
             # Extracting parameters
-            rds = theta[:3]
-            idM1 = 3 + len(self.x_inits) + len(self.time1_inits)
-            beta1 = theta[3: idM1]
+            rds = theta[:6]
+            idM1 = 6 + len(self.x_inits) + len(self.time1_inits)
+            beta1 = theta[6: idM1]
             beta0 = theta[idM1:]
 
             # Nuisance models
@@ -98,14 +97,14 @@ class PooledLogitEE:
             ee_plog0 = psi_plogit_a0(theta=beta0)
 
             # Predictions to get risk differences
-            risk1 = pooled_logit_prediction(theta=beta1, t=self.data[self.time], delta=self.data[self.delta],
-                                            X=self.x_matrix, S=self.pregen_matrix,
-                                            times_to_predict=[10, 20, 30], measure='risk',
-                                            unique_times=self.unique_event_times_a1)
-            risk0 = pooled_logit_prediction(theta=beta0, t=self.data[self.time], delta=self.data[self.delta],
-                                            X=self.x_matrix, S=self.pregen_matrix,
-                                            times_to_predict=[10, 20, 30], measure='risk',
-                                            unique_times=self.unique_event_times_a0)
+            risk1 = plogit_predict(theta=beta1, t=self.data[self.time], delta=self.data[self.delta],
+                                   X=self.x_matrix, S=self.pregen_matrix,
+                                   times_to_predict=[5, 10, 15, 20, 25, 30], measure='risk',
+                                   unique_times=self.unique_event_times_a1)
+            risk0 = plogit_predict(theta=beta0, t=self.data[self.time], delta=self.data[self.delta],
+                                   X=self.x_matrix, S=self.pregen_matrix,
+                                   times_to_predict=[5, 10, 15, 20, 25, 30], measure='risk',
+                                   unique_times=self.unique_event_times_a0)
             ee_rd = (risk1 - risk0) - np.asarray(rds)[:, None]
 
             # Returning stacked estimating equations
@@ -121,14 +120,14 @@ class PooledLogitEE:
         estr_nuisance0.estimate(solver='lm', maxiter=50000)
         init_nuisance_a0 = list(estr_nuisance0.theta)
 
-        init_vals = [0., 0., 0., ] + init_nuisance_a1 + init_nuisance_a0
+        init_vals = [0., ]*6 + init_nuisance_a1 + init_nuisance_a0
         estr = MEstimator(psi_rd, init=init_vals)
         estr.estimate(solver='lm', maxiter=50000)
 
-        self.point = estr.theta[:3]
-        self.variance = np.diag(estr.variance)[:3]
-        self.lower_ci = estr.confidence_intervals()[:3, 0]
-        self.upper_ci = estr.confidence_intervals()[:3, 1]
+        self.point = estr.theta[:6]
+        self.variance = np.diag(estr.variance)[:6]
+        self.lower_ci = estr.confidence_intervals()[:6, 0]
+        self.upper_ci = estr.confidence_intervals()[:6, 1]
 
     @staticmethod
     def time_fixed_matrix(interval):

@@ -8,9 +8,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from delicatessen import MEstimator
-from delicatessen.utilities import spline
-
-from efuncs import ee_pooled_logit, pooled_logit_prediction
+from delicatessen.estimating_equations import ee_plogit
+from delicatessen.utilities import spline, plogit_predict
 from plotting import twister_plot
 
 #########################################################################
@@ -57,13 +56,13 @@ params_plr_a0 = len(event_times_a0)
 
 
 def psi_plogit_a1(theta):
-    ee_plog = ee_pooled_logit(theta, t=t, delta=y, X=W, unique_times=event_times_a1)
+    ee_plog = ee_plogit(theta, t=t, delta=y, X=W, unique_times=event_times_a1)
     ee_plog = ee_plog * (a == 1)[None, :]
     return ee_plog
 
 
 def psi_plogit_a0(theta):
-    ee_plog = ee_pooled_logit(theta, t=t, delta=y, X=W, unique_times=event_times_a0)
+    ee_plog = ee_plogit(theta, t=t, delta=y, X=W, unique_times=event_times_a0)
     ee_plog = ee_plog * (a == 0)[None, :]
     return ee_plog
 
@@ -77,8 +76,9 @@ def psi_r1(theta):
     ee_plog = psi_plogit_a1(theta=beta)
 
     # Predictions to get risk differences
-    risk1 = pooled_logit_prediction(theta=beta, delta=y, t=t, X=W,
-                                    times_to_predict=event_times_p1, measure='risk', unique_times=event_times_a1)
+    risk1 = plogit_predict(theta=beta, delta=y, t=t, X=W,
+                           times_to_predict=event_times_p1, measure='risk',
+                           unique_times=event_times_a1)
     ee_rd = risk1 - np.asarray(risks)[:, None]
 
     # Returning stacked estimating equations
@@ -94,8 +94,9 @@ def psi_r0(theta):
     ee_plog = psi_plogit_a0(theta=beta)
 
     # Predictions to get risk differences
-    risk0 = pooled_logit_prediction(theta=beta, delta=y, t=t, X=W,
-                                    times_to_predict=event_times_p0, measure='risk', unique_times=event_times_a0)
+    risk0 = plogit_predict(theta=beta, delta=y, t=t, X=W,
+                           times_to_predict=event_times_p0, measure='risk',
+                           unique_times=event_times_a0)
     ee_rd = risk0 - np.asarray(risks)[:, None]
 
     # Returning stacked estimating equations
@@ -114,10 +115,12 @@ def psi_rd(theta):
     ee_plog0 = psi_plogit_a0(theta=beta0)
 
     # Predictions to get risk differences
-    risk1 = pooled_logit_prediction(theta=beta1, delta=y, t=t, X=W,
-                                    times_to_predict=event_times, measure='risk', unique_times=event_times_a1)
-    risk0 = pooled_logit_prediction(theta=beta0, delta=y, t=t, X=W,
-                                    times_to_predict=event_times, measure='risk', unique_times=event_times_a0)
+    risk1 = plogit_predict(theta=beta1, delta=y, t=t, X=W,
+                           times_to_predict=event_times, measure='risk',
+                           unique_times=event_times_a1)
+    risk0 = plogit_predict(theta=beta0, delta=y, t=t, X=W,
+                           times_to_predict=event_times, measure='risk',
+                           unique_times=event_times_a0)
     ee_rd = (risk1 - risk0) - np.asarray(rds)[:, None]
 
     # Returning stacked estimating equations
@@ -137,6 +140,9 @@ r1_results['risk'] = estr.theta[:params_r1]
 r1_ci = estr.confidence_intervals()[:params_r1, :]
 r1_results['lcl'] = r1_ci[:, 0]
 r1_results['ucl'] = r1_ci[:, 1]
+r1_cb = estr.confidence_bands(subset=list(range(1, params_r1)), seed=112345)
+r1_results['lcb'] = [0., ] + list(r1_cb[:, 0])
+r1_results['ucb'] = [0., ] + list(r1_cb[:, 1])
 
 inits = [0., ]*W.shape[1] + [-4., ] + [0., ]*(params_plr_a0 - 1)
 estr = MEstimator(psi_plogit_a0, init=inits)
@@ -151,6 +157,9 @@ r0_results['risk'] = estr.theta[:params_r0]
 r0_ci = estr.confidence_intervals()[:params_r0, :]
 r0_results['lcl'] = r0_ci[:, 0]
 r0_results['ucl'] = r0_ci[:, 1]
+r0_cb = estr.confidence_bands(subset=list(range(1, params_r0)), seed=112345)
+r0_results['lcb'] = [0., ] + list(r0_cb[:, 0])
+r0_results['ucb'] = [0., ] + list(r0_cb[:, 1])
 
 inits = [0., ]*W.shape[1] + [-4., ] + [0., ]*(params_plr_a1 - 1)
 estr = MEstimator(psi_plogit_a1, init=inits)
@@ -171,15 +180,19 @@ rd_results['time'] = event_times
 rd_results['rd'] = rd
 rd_results['lcl'] = rd_ci[:, 0]
 rd_results['ucl'] = rd_ci[:, 1]
+rd_cb = estr.confidence_bands(subset=list(range(1, params_rd)), seed=112345)
+rd_results['lcb'] = [0., ] + list(rd_cb[:, 0])
+rd_results['ucb'] = [0., ] + list(rd_cb[:, 1])
+
 print("Results -- Disjoint")
 print(rd_results.tail(1))
 
 fig, axes = plt.subplots(2, 2, width_ratios=[3, 1], figsize=[7.2, 3.6*2])
 ax0 = axes[0, 0]
-ax0.fill_between(r1_results['time'], r1_results['lcl'], r1_results['ucl'], color='blue', alpha=0.1, step='post')
-ax0.fill_between(r0_results['time'], r0_results['lcl'], r0_results['ucl'], color='red', alpha=0.1, step='post')
-ax0.step(r1_results['time'], r1_results['risk'], color='blue', where='post', label='IDU')
-ax0.step(r0_results['time'], r0_results['risk'], color='red', where='post', label='No IDU')
+ax0.fill_between(r1_results['time'], r1_results['lcl'], r1_results['ucl'], color='#7570b3', alpha=0.25, step='post')
+ax0.fill_between(r0_results['time'], r0_results['lcl'], r0_results['ucl'], color='#d95f02', alpha=0.25, step='post')
+ax0.step(r1_results['time'], r1_results['risk'], color='#7570b3', where='post', label='IDU')
+ax0.step(r0_results['time'], r0_results['risk'], color='#d95f02', where='post', label='No IDU')
 ax0.set_xlim([-5, np.max(t)+5])
 ax0.set_ylim([0, 1])
 ax0.set_xlabel("Time (days)")
@@ -208,13 +221,13 @@ s_matrix = np.concatenate([intercept, t_steps[:, None], time_splines], axis=1)
 
 
 def psi_plogit_spline_a1(theta):
-    ee_plog = ee_pooled_logit(theta=theta, t=t, delta=y, X=W, S=s_matrix)
+    ee_plog = ee_plogit(theta=theta, t=t, delta=y, X=W, S=s_matrix)
     ee_plog = ee_plog * (a == 1)[None, :]
     return ee_plog
 
 
 def psi_plogit_spline_a0(theta):
-    ee_plog = ee_pooled_logit(theta=theta, t=t, delta=y, X=W, S=s_matrix)
+    ee_plog = ee_plogit(theta=theta, t=t, delta=y, X=W, S=s_matrix)
     ee_plog = ee_plog * (a == 0)[None, :]
     return ee_plog
 
@@ -228,8 +241,8 @@ def psi_r1(theta):
     ee_plog = psi_plogit_spline_a1(theta=beta)
 
     # Predictions to get risk differences
-    risk1 = pooled_logit_prediction(theta=beta, t=t, delta=y, X=W, S=s_matrix,
-                                    times_to_predict=tp_intervals, measure='risk')
+    risk1 = plogit_predict(theta=beta, t=t, delta=y, X=W, S=s_matrix,
+                           times_to_predict=tp_intervals, measure='risk')
     ee_rd = risk1 - np.asarray(risks)[:, None]
 
     # Returning stacked estimating equations
@@ -245,8 +258,8 @@ def psi_r0(theta):
     ee_plog = psi_plogit_spline_a0(theta=beta)
 
     # Predictions to get risk differences
-    risk0 = pooled_logit_prediction(theta=beta, t=t, delta=y, X=W, S=s_matrix,
-                                    times_to_predict=tp_intervals, measure='risk')
+    risk0 = plogit_predict(theta=beta, t=t, delta=y, X=W, S=s_matrix,
+                           times_to_predict=tp_intervals, measure='risk')
     ee_rd = risk0 - np.asarray(risks)[:, None]
 
     # Returning stacked estimating equations
@@ -265,10 +278,10 @@ def psi_rd(theta):
     ee_plog0 = psi_plogit_spline_a0(theta=beta0)
 
     # Predictions to get risk differences
-    risk1 = pooled_logit_prediction(theta=beta1, t=t, delta=y, X=W, S=s_matrix,
-                                    times_to_predict=tp_intervals, measure='risk')
-    risk0 = pooled_logit_prediction(theta=beta0, t=t, delta=y, X=W, S=s_matrix,
-                                    times_to_predict=tp_intervals, measure='risk')
+    risk1 = plogit_predict(theta=beta1, t=t, delta=y, X=W, S=s_matrix,
+                           times_to_predict=tp_intervals, measure='risk')
+    risk0 = plogit_predict(theta=beta0, t=t, delta=y, X=W, S=s_matrix,
+                           times_to_predict=tp_intervals, measure='risk')
     ee_rd = (risk1 - risk0) - np.asarray(risks)[:, None]
 
     # Returning stacked estimating equations
@@ -288,6 +301,9 @@ r1_results['risk'] = estr.theta[:params_risk]
 r1_ci = estr.confidence_intervals()[:params_risk, :]
 r1_results['lcl'] = r1_ci[:, 0]
 r1_results['ucl'] = r1_ci[:, 1]
+r1_cb = estr.confidence_bands(subset=list(range(1, params_risk)), seed=345678)
+r1_results['lcb'] = [0., ] + list(r1_cb[:, 0])
+r1_results['ucb'] = [0., ] + list(r1_cb[:, 1])
 
 inits = [0., ]*W.shape[1] + [-8., ] + [0., ]*5
 estr = MEstimator(psi_plogit_spline_a0, init=inits)
@@ -302,6 +318,9 @@ r0_results['risk'] = estr.theta[:params_risk]
 r0_ci = estr.confidence_intervals()[:params_risk, :]
 r0_results['lcl'] = r0_ci[:, 0]
 r0_results['ucl'] = r0_ci[:, 1]
+r0_cb = estr.confidence_bands(subset=list(range(1, params_risk)), seed=345678)
+r0_results['lcb'] = [0., ] + list(r0_cb[:, 0])
+r0_results['ucb'] = [0., ] + list(r0_cb[:, 1])
 
 inits = [0., ] * W.shape[1] + [-8., ] + [0., ] * 5
 estr = MEstimator(psi_plogit_spline_a1, init=inits)
@@ -321,14 +340,18 @@ rd_results['rd'] = estr.theta[:params_risk]
 rd_ci = estr.confidence_intervals()[:params_risk, :]
 rd_results['lcl'] = rd_ci[:, 0]
 rd_results['ucl'] = rd_ci[:, 1]
+rd_cb = estr.confidence_bands(subset=list(range(1, params_risk)), seed=345678)
+rd_results['lcb'] = [0., ] + list(rd_cb[:, 0])
+rd_results['ucb'] = [0., ] + list(rd_cb[:, 1])
+
 print("Results -- Spline")
 print(rd_results.tail(1))
 
 ax2 = axes[1, 0]
-ax2.fill_between(r1_results['time'], r1_results['lcl'], r1_results['ucl'], color='blue', alpha=0.1)
-ax2.fill_between(r0_results['time'], r0_results['lcl'], r0_results['ucl'], color='red', alpha=0.1)
-ax2.plot(r1_results['time'], r1_results['risk'], color='blue', label='IDU')
-ax2.plot(r0_results['time'], r0_results['risk'], color='red', label='No IDU')
+ax2.fill_between(r1_results['time'], r1_results['lcl'], r1_results['ucl'], color='#7570b3', alpha=0.25)
+ax2.fill_between(r0_results['time'], r0_results['lcl'], r0_results['ucl'], color='#d95f02', alpha=0.25)
+ax2.plot(r1_results['time'], r1_results['risk'], color='#7570b3', label='IDU')
+ax2.plot(r0_results['time'], r0_results['risk'], color='#d95f02', label='No IDU')
 ax2.set_xlim([-5, np.max(t)+5])
 ax2.set_ylim([0, 1])
 ax2.set_xlabel("Time (days)")
