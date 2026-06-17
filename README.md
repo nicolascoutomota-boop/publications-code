@@ -23,6 +23,10 @@ Zivich PN. "Invited Commentary: The Seedy Side of Causal Effect Estimation with 
 2024;35(6):787-790.
 [![PubMed](https://img.shields.io/badge/PubMed-39150866-0047AB.svg)](https://pubmed.ncbi.nlm.nih.gov/39150866/)
 
+### ClusteringEE
+
+Zivich PN, Edwards JK, Shook-SA BE, Cole SR. "A Simplified Strategy for Handling Incidental Clustering". *Submitted*.
+
 ### ConfRegions
 Zivich PN, Cole SR, Greifer N, Montoya LM, Kosorok MR, Edwards JK. "Confidence Regions for Multiple Outcomes, Effect
 Modifiers, and Other Multiple Comparisons". *Submitted*.
