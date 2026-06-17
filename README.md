@@ -15,7 +15,7 @@ Outcomes: A Simulated Example in the Context of Vaccination". *American Journal 
 
 ### BridgeComparisonIntro
 Zivich PN, Cole SR, Edwards JK, Shook-Sa BE, Breskin A, and Hudgens MG. "Bridged treatment comparisons: an illustrative
-application in HIV treatment". *American Journal of Epidemiology* 2025; In-Press.
+application in HIV treatment". *American Journal of Epidemiology* 2025; 194(6):1687-1694.
 [![PubMed](https://img.shields.io/badge/PubMed-39218437-0047AB.svg)](https://pubmed.ncbi.nlm.nih.gov/39218437/)
 
 ### CausalRNG
@@ -39,7 +39,7 @@ Zivich PN, Breskin A. "Machine learning for causal inference: on the use of cros
 
 ### FusedCohortStudies
 Cole SR, Zivich PN, Shook-Sa BE, Richardson DB, Hudgens MG, Edwards JK. "Fusing Observational Studies to Reduce
-Multiple Biases". *Submitted*. 2025.
+Multiple Biases". *Epidemiology*. 2026; In-Press.
 
 ### GCompMSM
 Zivich PN, Shook-Sa BE. "Estimating Marginal Structural Model Parameters for Time-Fixed, Binary Actions with
@@ -47,12 +47,13 @@ g-computation and Estimating Equations" *American Journal of Epidemiology* 2025;
 [![PubMed](https://img.shields.io/badge/PubMed-39191643-0047AB.svg)](https://pubmed.ncbi.nlm.nih.gov/39191643/)
 
 ### GCompSelection
-Zivich PN, Lu H. "Constructing g-computation estimators: two case studies in selection bias". *Epidemiology*
-[![arXiv](https://img.shields.io/badge/arXiv-2506.03347-b31b1b.svg)](https://arxiv.org/abs/2506.03347)
+Zivich PN, Lu H. "Constructing g-computation estimators: two case studies in selection bias". *Epidemiology* 
+2025;37(1):50–56.
+[![arXiv](https://img.shields.io/badge/PubMed-41342792-0047AB.svg)](https://pubmed.ncbi.nlm.nih.gov/41342792/)
 
 ### ImprovedPooledLogit
 Zivich PN, Klose M, DeMonte JB, Shook-Sa BE, Cole SR, Edwards JK. "An Improved Pooled Logistic Regression
-Implementation". *Epidemiology* 2025; 
+Implementation". *Epidemiology* 2026;37(3):311-314. 
 [![PubMed](https://img.shields.io/badge/PubMed-39191643-0047AB.svg)](https://pubmed.ncbi.nlm.nih.gov/41490323/)
 
 ### M-estimator_ICE
@@ -70,7 +71,7 @@ Studies". *American Journal of Epidemiology*. 2023;192(1):6-10.
 [![PubMed](https://img.shields.io/badge/PubMed-36222655-0047AB.svg)](https://pubmed.ncbi.nlm.nih.gov/36222655/)
 
 ### NeuralNetworkPrimer
-Zivich PN, Naimi A. "A Primer on Neural Networks". *American Journal of Epidemiology* 2025; In-Press.
+Zivich PN, Naimi A. "A Primer on Neural Networks". *American Journal of Epidemiology* 2025;194(6):1473-1475.
 [![PubMed](https://img.shields.io/badge/PubMed-39358996-0047AB.svg)](https://pubmed.ncbi.nlm.nih.gov/39358996/)
 
 ### PerProtocolBounds
@@ -84,7 +85,7 @@ logistic regression". *Submitted*.
 
 ### PooledLogitMultinom
 Neuroth LM, Swilley-Martinez ME, Zivich PN, Edwards JK. "Pooled multinomial logistic regression for parametric 
-g-computation in the presence of competing events". *Submitted*.
+g-computation in the presence of competing events". *Epidemiology* 2026; In-Press.
 
 ### PooledTestingSARS2
 Filitreau LM, Zivich PN, Edwards JK, Mulholland GE, Max R, Westreich D. "Optimizing SARS-CoV-2 pooled testing strategies
@@ -118,8 +119,8 @@ with a continuous covariate" *J R Stat Soc Ser A Stat Soc* 2024;188(1):158-180.
 
 ### SynthesisMNTE
 Zivich PN, Shook-Sa BE, Cole SR, Lofgren ET, Edwards JK. "Account for Missing Data in Public Health Research
-Using a Synthesis of Statistical and Mathematical Models" *Submitted*.
-[![arXiv](https://img.shields.io/badge/arXiv-2503.02789-b31b1b.svg)](https://arxiv.org/abs/2503.02789)
+Using a Synthesis of Statistical and Mathematical Models" * J Epidemiol Community Health* 2026;80(5):352-356.
+[![arXiv](https://img.shields.io/badge/PubMed-41513267-0047AB.svg)](https://pubmed.ncbi.nlm.nih.gov/41513267/)
 
 ### TransportNoPositivity
 Zivich PN, Edwards JK, Lofgren ET, Cole SR, Shook-Sa BE, Lessler J. "Transportability without positivity: a synthesis
