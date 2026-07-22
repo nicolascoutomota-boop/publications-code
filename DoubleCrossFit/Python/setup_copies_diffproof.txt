@@ -1,0 +1,75 @@
+PROOF: each run_sim_*.py copy is identical to the corresponding authors' sim_*.py
+except the single 'setup = N' digit. Generated 2026-07-19 13:07. Full diffs below.
+
+--- diff sim_gform.py run_sim_gform_setup2.py ---
+17c17
+< setup = 1  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+---
+> setup = 2  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+
+--- diff sim_gform.py run_sim_gform_setup3.py ---
+17c17
+< setup = 1  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+---
+> setup = 3  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+
+--- diff sim_iptw.py run_sim_iptw_setup2.py ---
+17c17
+< setup = 1  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+---
+> setup = 2  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+
+--- diff sim_iptw.py run_sim_iptw_setup3.py ---
+17c17
+< setup = 1  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+---
+> setup = 3  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+
+--- diff sim_aipw.py run_sim_aipw_setup2.py ---
+17c17
+< setup = 1  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+---
+> setup = 2  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+
+--- diff sim_aipw.py run_sim_aipw_setup3.py ---
+17c17
+< setup = 1  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+---
+> setup = 3  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+
+--- diff sim_tmle.py run_sim_tmle_setup2.py ---
+17c17
+< setup = 1  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+---
+> setup = 2  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+
+--- diff sim_tmle.py run_sim_tmle_setup3.py ---
+17c17
+< setup = 1  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+---
+> setup = 3  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+
+--- diff sim_dcaipw.py run_sim_dcaipw_setup2.py ---
+17c17
+< setup = 1  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+---
+> setup = 2  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+
+--- diff sim_dcaipw.py run_sim_dcaipw_setup3.py ---
+17c17
+< setup = 1  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+---
+> setup = 3  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+
+--- diff sim_dctmle.py run_sim_dctmle_setup2.py ---
+19c19
+< setup = 1  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+---
+> setup = 2  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+
+--- diff sim_dctmle.py run_sim_dctmle_setup3.py ---
+19c19
+< setup = 1  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+---
+> setup = 3  # options include: 1-correct parametric model, 2-main-terms model, 3-machine learning with main-terms
+

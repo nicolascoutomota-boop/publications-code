@@ -1,0 +1,4 @@
+.venv/
+.venv-pinned/
+statin_sim_data.csv
+__pycache__/

@@ -1,0 +1,126 @@
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/statsmodels/tsa/base/tsa_model.py:7: FutureWarning: pandas.Int64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
+  from pandas import (to_datetime, Int64Index, DatetimeIndex, Period,
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/statsmodels/tsa/base/tsa_model.py:7: FutureWarning: pandas.Float64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
+  from pandas import (to_datetime, Int64Index, DatetimeIndex, Period,
+========================================
+Data description
+----------------------------------------
+        Statin n=776   No Statin n=2224
+----------------------------------------
+Age      58.0                 53.0         
+Age(SD)  9.54                 7.61         
+Diabetes 0.31                 0.01         
+log(LDL) 4.92                 4.86         
+LDL(SD)  0.2                  0.18         
+Risk #   0.15                 0.06         
+Risk#(SD)0.2                  0.06         
+ASCVD    0.37                 0.29         
+========================================
+========================================
+G-formula -- Parametric
+----------------------------------------
+RD:            -0.14
+SD(RD):        0.017
+95% CL:        [-0.17 -0.11]
+CLD:        0.07
+TIME ELAPSED:  0.356
+========================================
+========================================
+G-formula -- Super Learner
+----------------------------------------
+RD:            -0.09
+SD(RD):        0.015
+95% CL:        [-0.12 -0.06]
+CLD:        0.06
+TIME ELAPSED:  104.779
+========================================
+========================================
+IPTW -- Parametric
+----------------------------------------
+RD:            -0.13
+SD(RD):        0.039
+95% CL:        [-0.2  -0.05]
+CLD:           0.15
+TIME ELAPSED:  0.025
+========================================
+========================================
+IPTW -- Super Learner
+----------------------------------------
+RD:            -0.11
+SD(RD):        0.028
+95% CL:        [-0.16 -0.05]
+CLD:           0.11
+TIME ELAPSED:  0.468
+========================================
+========================================
+AIPTW -- Parametric
+----------------------------------------
+RD:            -0.08
+SD(RD):        0.038
+95% CL:        [-0.16 -0.01]
+CLD:           0.15
+TIME ELAPSED:  0.004
+========================================
+========================================
+AIPTW -- Super Learner
+----------------------------------------
+RD:            -0.11
+SD(RD):        0.016
+95% CL:        [-0.14 -0.08]
+CLD:           0.06
+TIME ELAPSED:  0.947
+========================================
+========================================
+TMLE -- Parametric
+----------------------------------------
+RD:            -0.12
+SD(RD):        0.029
+95% CL:        [-0.18 -0.06]
+CLD:           0.11
+TIME ELAPSED:  0.005
+========================================
+========================================
+TMLE -- Super Learner
+----------------------------------------
+RD:            -0.12
+SD(RD):        0.016
+95% CL:        [-0.15 -0.09]
+CLD:           0.06
+TIME ELAPSED:  0.934
+========================================
+========================================
+DC-AIPW -- Parametric
+----------------------------------------
+RD:            -0.09
+SD(RD):        0.039
+95% CL:        [-0.16 -0.01]
+CLD:           0.15
+TIME ELAPSED:  0.845
+========================================
+========================================
+DC-AIPW -- Super Learner
+----------------------------------------
+RD:            -0.11
+SD(RD):        0.022
+95% CL:        [-0.16 -0.07]
+CLD:           0.09
+TIME ELAPSED:  173.244
+========================================
+========================================
+DC-TMLE -- Parametric
+----------------------------------------
+RD:            -0.12
+SD(RD):        0.029
+95% CL:        [-0.18 -0.07]
+CLD:           0.11
+TIME ELAPSED:  1.199
+========================================
+========================================
+DC-TMLE -- Super Learner
+----------------------------------------
+RD:            -0.11
+SD(RD):        0.022
+95% CL:        [-0.15 -0.07]
+CLD:           0.09
+TIME ELAPSED:  190.846
+========================================
