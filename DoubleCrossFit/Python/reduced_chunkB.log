@@ -38,3 +38,20 @@ sim_id 542: ipw_rd=-0.1215 gcomp_rd=-0.1038 aipw_rd=-0.1215 tmle_rd=-0.1233 scai
 sim_id 543: ipw_rd=-0.0752 gcomp_rd=-0.0677 aipw_rd=-0.0902 tmle_rd=-0.0977 scaipw_rd=-0.0909 sctmle_rd=-0.0937   [22 done, 417.9s/dataset]
 sim_id 544: ipw_rd=-0.0933 gcomp_rd=-0.0714 aipw_rd=-0.0998 tmle_rd=-0.1046 scaipw_rd=-0.1006 sctmle_rd=-0.1043   [23 done, 424.6s/dataset]
 resuming reduced_results_0501_1000.csv: 51 datasets already done
+run_reduced.sh: line 16: setsid: command not found
+resuming reduced_results_0501_1000.csv: 51 datasets already done
+sim_id 545: ipw_rd=-0.1157 gcomp_rd=-0.0998 aipw_rd=-0.1190 tmle_rd=-0.1256 scaipw_rd=-0.1253 sctmle_rd=-0.1212   [1 done, 436.9s/dataset]
+sim_id 546: ipw_rd=-0.0619 gcomp_rd=-0.0628 aipw_rd=-0.0768 tmle_rd=-0.0794 scaipw_rd=-0.0764 sctmle_rd=-0.0749   [2 done, 419.2s/dataset]
+sim_id 547: ipw_rd=-0.1190 gcomp_rd=-0.1013 aipw_rd=-0.1191 tmle_rd=-0.1240 scaipw_rd=-0.1232 sctmle_rd=-0.1156   [3 done, 410.6s/dataset]
+sim_id 548: ipw_rd=-0.1099 gcomp_rd=-0.1036 aipw_rd=-0.1218 tmle_rd=-0.1275 scaipw_rd=-0.1281 sctmle_rd=-0.1189   [4 done, 408.3s/dataset]
+sim_id 549: ipw_rd=-0.0680 gcomp_rd=-0.0531 aipw_rd=-0.0736 tmle_rd=-0.0792 scaipw_rd=-0.0774 sctmle_rd=-0.0807   [5 done, 425.2s/dataset]
+sim_id 550: ipw_rd=-0.0930 gcomp_rd=-0.0709 aipw_rd=-0.0988 tmle_rd=-0.1064 scaipw_rd=-0.1058 sctmle_rd=-0.1032   [6 done, 436.1s/dataset]
+sim_id 551: ipw_rd=-0.0974 gcomp_rd=-0.0858 aipw_rd=-0.1044 tmle_rd=-0.1108 scaipw_rd=-0.1266 sctmle_rd=-0.1118   [7 done, 435.7s/dataset]
+sim_id 552: ipw_rd=-0.0696 gcomp_rd=-0.0610 aipw_rd=-0.0817 tmle_rd=-0.0862 scaipw_rd=-0.1388 sctmle_rd=-0.0805   [8 done, 437.3s/dataset]
+sim_id 553: ipw_rd=-0.1035 gcomp_rd=-0.0833 aipw_rd=-0.1091 tmle_rd=-0.1148 scaipw_rd=-0.1404 sctmle_rd=-0.1175   [9 done, 445.4s/dataset]
+sim_id 554: ipw_rd=-0.0830 gcomp_rd=-0.0964 aipw_rd=-0.1078 tmle_rd=-0.1146 scaipw_rd=-0.1134 sctmle_rd=-0.1082   [10 done, 458.0s/dataset]
+sim_id 555: ipw_rd=-0.0659 gcomp_rd=-0.0503 aipw_rd=-0.0722 tmle_rd=-0.0787 scaipw_rd=-0.0724 sctmle_rd=-0.0723   [11 done, 465.7s/dataset]
+sim_id 556: ipw_rd=-0.1006 gcomp_rd=-0.0774 aipw_rd=-0.1069 tmle_rd=-0.1199 scaipw_rd=-0.1283 sctmle_rd=-0.0995   [12 done, 505.2s/dataset]
+sim_id 557: ipw_rd=-0.1026 gcomp_rd=-0.0948 aipw_rd=-0.1094 tmle_rd=-0.1120 scaipw_rd=-0.1209 sctmle_rd=-0.1177   [13 done, 546.3s/dataset]
+sim_id 558: ipw_rd=-0.1404 gcomp_rd=-0.1189 aipw_rd=-0.1466 tmle_rd=-0.1514 scaipw_rd=-0.1454 sctmle_rd=-0.1476   [14 done, 573.4s/dataset]
+resuming reduced_results_0501_1000.csv: 65 datasets already done

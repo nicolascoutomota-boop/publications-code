@@ -15,7 +15,9 @@ launch () {  # $1=start $2=end $3=outfile $4=logfile
   fi
   # macOS-compatible detachment: nohup + background + disown -> orphaned to launchd,
   # survives the terminal / Claude session closing.
-  nohup caffeinate -i "$PY" -W ignore -u reduced_design.py \
+  # caffeinate flags: -i idle sleep, -m disk sleep, -s system sleep (while on AC power).
+  # (-i alone is NOT enough: the machine slept mid-run on 2026-07-23 and killed the jobs.)
+  nohup caffeinate -ims "$PY" -W ignore -u reduced_design.py \
       --start "$1" --end "$2" --k 10 --rf-jobs 2 --out "$3" >> "$4" 2>&1 < /dev/null &
   disown
   echo "launched chunk $1-$2 (detached, pid $!)"
