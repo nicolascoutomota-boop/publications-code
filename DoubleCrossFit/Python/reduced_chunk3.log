@@ -1,0 +1,19 @@
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/statsmodels/tsa/base/tsa_model.py:7: FutureWarning: pandas.Int64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
+  from pandas import (to_datetime, Int64Index, DatetimeIndex, Period,
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/statsmodels/tsa/base/tsa_model.py:7: FutureWarning: pandas.Float64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
+  from pandas import (to_datetime, Int64Index, DatetimeIndex, Period,
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/zepid/datasets/__init__.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+sim_id 501: ipw_rd=-0.0966 gcomp_rd=-0.0958 aipw_rd=-0.1178 tmle_rd=-0.1249 scaipw_rd=-0.1599 sctmle_rd=-0.1303   [1 done, 544.5s/dataset]
+sim_id 502: ipw_rd=-0.0976 gcomp_rd=-0.0815 aipw_rd=-0.1096 tmle_rd=-0.1158 scaipw_rd=-0.1197 sctmle_rd=-0.1177   [2 done, 540.8s/dataset]
+sim_id 503: ipw_rd=-0.0979 gcomp_rd=-0.0850 aipw_rd=-0.1088 tmle_rd=-0.1180 scaipw_rd=-0.1150 sctmle_rd=-0.1105   [3 done, 541.2s/dataset]
+sim_id 504: ipw_rd=-0.0760 gcomp_rd=-0.0716 aipw_rd=-0.0834 tmle_rd=-0.0856 scaipw_rd=-0.0909 sctmle_rd=-0.0952   [4 done, 1024.6s/dataset]
+sim_id 505: ipw_rd=-0.0790 gcomp_rd=-0.0588 aipw_rd=-0.0834 tmle_rd=-0.0950 scaipw_rd=-0.1026 sctmle_rd=-0.1062   [5 done, 1899.0s/dataset]
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/sklearn/neural_network/_multilayer_perceptron.py:559: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+  self.n_iter_ = _check_optimize_result("lbfgs", opt_res, self.max_iter)
+sim_id 506: ipw_rd=-0.1012 gcomp_rd=-0.0725 aipw_rd=-0.1019 tmle_rd=-0.1056 scaipw_rd=-0.0956 sctmle_rd=-0.0971   [6 done, 1875.0s/dataset]
+sim_id 507: ipw_rd=-0.0816 gcomp_rd=-0.0669 aipw_rd=-0.0805 tmle_rd=-0.0843 scaipw_rd=-0.0878 sctmle_rd=-0.0885   [7 done, 1672.7s/dataset]

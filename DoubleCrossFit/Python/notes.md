@@ -82,6 +82,8 @@ pinned-env speeds to be confirmed (same order of magnitude expected).
 | 2026-07-21 | run_sim_iptw_setup3.py | 3 | .venv-pinned | **DONE ~2 days**. Bias 0.0107, ASE 0.0227, coverage 0.945. Sanity PASS. → iptw_results3.csv (result #9). |
 | 2026-07-21 | (session closed) | — | — | **All 5 background jobs died when the previous session ended.** iptw3 and gform2 had already finished (saved). AIPW setup 3 (~1d in), DC-AIPW setup 1 (~2d in), DC-TMLE setup 1 (~2d in) died with NO output — these write only at the end, so that compute was lost. See PROJECT_LOG.md. |
 | 2026-07-21 | timing benchmark | — | .venv-pinned | Machine idle → clean measure: one super-learner fit (K=10, n=3000) = **13 s**. Basis for reduced-design timing table in PROJECT_LOG.md. |
+| 2026-07-21 | run_sim_aipw_setup3.py | 3 | .venv-pinned | **Restarted** (died on session close). AIPW no-crossfit under super learner = method 3 of reduced plan; needed either way. ~2 days est. |
+| 2026-07-21 | run_sim_tmle_setup3.py | 3 | .venv-pinned | **Started.** TMLE no-crossfit under super learner = method 4 of reduced plan; needed either way. ~2 days est. |
 
 ## PLAN CHANGE (2026-07-21): reduced design agreed with supervisor
 

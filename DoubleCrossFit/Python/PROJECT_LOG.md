@@ -43,21 +43,40 @@ fits/dataset = 6 + 20k, where k = number of cross-fit repetitions.
 | 5 | 106 | 7.3% | ~4 days | ~8 days |
 (4 cores; pad ~1.5× for real-run overhead/thermal throttling.)
 
-### OPEN QUESTIONS awaiting Shaun's reply (asked 2026-07-21)
-- **How many cross-fit repetitions (k)?** zepid's `SingleCrossfit*` default is
-  `n_partitions=100`, which would blow the budget back up to ~1,000 fits/dataset. Shaun's
-  "10 fits" assumes k=1. I suggested a few (3–5) for stability; awaiting his choice.
+### RESOLVED (Shaun, 2026-07-21, second reply)
+- **Cross-fit repetitions k = 1** (a single split). Shaun: repeated cross-fitting is a real
+  technique that lowers the ATE estimator's SE and improves single-dataset reproducibility,
+  but he cares about *summary statistics over 1,000–2,000 datasets*, not per-dataset SE or
+  single-dataset reproducibility — so one split is fine, and cheaper. ⇒ `n_partitions=1`.
+- **1,000 datasets** (confirmed "entirely satisfactory").
+- ⇒ Design is now **fully specified**: 26 super-learner fits/dataset, ~1 day on my laptop.
+  (Note for interpretation: with a single split the two cross-fit estimators carry extra
+  split-induced variance, which will slightly inflate their empirical SD vs a repeated-split
+  version. That is a genuine property of single-split cross-fitting, not an error — Shaun
+  made this trade-off knowingly.)
 
-### MY STANDING TO-DOs once k is fixed
-- [ ] Time one full dataset under the exact agreed settings before promising a schedule.
-- [ ] **Set a seed in my own driver code** so our results are reproducible (theirs are not).
-- [ ] Implement the 6-method driver. Use zepid's `SingleCrossfitAIPTW` / `SingleCrossfitTMLE`
-      (Zivich's own package — no need to write cross-fit code ourselves; `fit(n_splits=5,
-      n_partitions=k, random_state=…)`).
-- [ ] For comparability, store **two CIs per method**: one from each method's own SE, one
-      from the empirical SE. (Flagged to Shaun: g-comp otherwise uses the true SE while
-      AIPW/TMLE use estimated SEs, so coverage isn't like-for-like. Costs no extra compute.)
-- [ ] Store all point estimates for every dataset (Shaun asked explicitly).
+### IMPLEMENTATION status
+- [x] **Driver built and smoke-tested:** `reduced_design.py` (NEW file; does not touch the
+      authors' code). Runs all six methods per dataset, writes crash-safe after each dataset,
+      chunkable via `--start/--end` for parallel cores. Smoke test (2 datasets, K=2) passed —
+      all six give sane estimates near the truth; zepid single-crossfit works at
+      `n_splits=5, n_partitions=1`.
+- [x] **Seeded** per dataset (`BASE_SEED + sim_id`) so the run is reproducible and chunkable.
+- [x] Uses zepid's `SingleCrossfitAIPTW` / `SingleCrossfitTMLE` (Zivich's own package).
+- [x] Stores all six point estimates + SEs (where available) for every dataset.
+- [x] **Full run LAUNCHED** 2026-07-21: 1,000 datasets, K=10, as **2 chunks × RF n_jobs=2**
+      (`reduced_chunkA.log` datasets 1–500, `reduced_chunkB.log` 501–1000). Resume-enabled
+      (re-run same command to continue after any interruption). **ETA ~3.4 days.**
+      - Runtime tuning (measured on this 4-core i7-8557U laptop, which throttles under load):
+        4 procs×1 thread = 469 s/dataset (~5.4 d); 1 proc×4 threads = 386 s (~4.5 d);
+        **2 procs×2 threads = 297 s/dataset (~3.4 d) — chosen.**
+      - `--rf-jobs` is a pure speed flag (parallel tree building); it does not change the
+        statistical method. The authors' `super_learner.py` is untouched; n_jobs is set on the
+        estimator object at runtime.
+      - Earlier "~1 day" estimate was wrong: based on an over-optimistic 13 s/fit idle
+        measurement; real sustained cost is ~45–70 s/fit on this throttling laptop.
+- [ ] Summary step: per method compute mean bias, ESE, ASE, and **two coverages** — one from
+      each method's own SE, one from the empirical SE (for g-comp, only the empirical one).
 
 ---
 

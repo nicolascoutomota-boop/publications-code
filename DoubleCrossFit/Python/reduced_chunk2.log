@@ -1,0 +1,37 @@
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/statsmodels/tsa/base/tsa_model.py:7: FutureWarning: pandas.Int64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
+  from pandas import (to_datetime, Int64Index, DatetimeIndex, Period,
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/statsmodels/tsa/base/tsa_model.py:7: FutureWarning: pandas.Float64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
+  from pandas import (to_datetime, Int64Index, DatetimeIndex, Period,
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/zepid/datasets/__init__.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+sim_id 251: ipw_rd=-0.0931 gcomp_rd=-0.0861 aipw_rd=-0.1080 tmle_rd=-0.1175 scaipw_rd=-0.1066 sctmle_rd=-0.1169   [1 done, 546.7s/dataset]
+sim_id 252: ipw_rd=-0.1282 gcomp_rd=-0.1079 aipw_rd=-0.1305 tmle_rd=-0.1400 scaipw_rd=-0.1442 sctmle_rd=-0.1329   [2 done, 545.1s/dataset]
+sim_id 253: ipw_rd=-0.1026 gcomp_rd=-0.0959 aipw_rd=-0.1127 tmle_rd=-0.1194 scaipw_rd=-0.1270 sctmle_rd=-0.1228   [3 done, 544.8s/dataset]
+sim_id 254: ipw_rd=-0.1068 gcomp_rd=-0.0843 aipw_rd=-0.1102 tmle_rd=-0.1170 scaipw_rd=-0.1377 sctmle_rd=-0.1159   [4 done, 1058.1s/dataset]
+sim_id 255: ipw_rd=-0.0643 gcomp_rd=-0.0598 aipw_rd=-0.0843 tmle_rd=-0.0909 scaipw_rd=-0.1060 sctmle_rd=-0.0906   [5 done, 2122.9s/dataset]
+sim_id 256: ipw_rd=-0.1042 gcomp_rd=-0.0721 aipw_rd=-0.1052 tmle_rd=-0.1181 scaipw_rd=-0.1112 sctmle_rd=-0.1133   [6 done, 1877.3s/dataset]
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/pygam/links.py:149: RuntimeWarning: divide by zero encountered in true_divide
+  return dist.levels/(mu*(dist.levels - mu))
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/pygam/pygam.py:591: RuntimeWarning: invalid value encountered in multiply
+  return sp.sparse.diags((self.link.gradient(mu, self.distribution)**2 *
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/pygam/pygam.py:591: RuntimeWarning: overflow encountered in square
+  return sp.sparse.diags((self.link.gradient(mu, self.distribution)**2 *
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/pygam/links.py:133: RuntimeWarning: overflow encountered in exp
+  elp = np.exp(lp)
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/pygam/links.py:134: RuntimeWarning: invalid value encountered in true_divide
+  return dist.levels * elp / (elp + 1)
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/pygam/links.py:149: RuntimeWarning: overflow encountered in true_divide
+  return dist.levels/(mu*(dist.levels - mu))
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/pygam/links.py:149: RuntimeWarning: divide by zero encountered in true_divide
+  return dist.levels/(mu*(dist.levels - mu))
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/pygam/pygam.py:591: RuntimeWarning: invalid value encountered in multiply
+  return sp.sparse.diags((self.link.gradient(mu, self.distribution)**2 *
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/pygam/pygam.py:591: RuntimeWarning: overflow encountered in square
+  return sp.sparse.diags((self.link.gradient(mu, self.distribution)**2 *
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/pygam/links.py:133: RuntimeWarning: overflow encountered in exp
+  elp = np.exp(lp)
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/pygam/links.py:134: RuntimeWarning: invalid value encountered in true_divide
+  return dist.levels * elp / (elp + 1)
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/pygam/links.py:149: RuntimeWarning: overflow encountered in true_divide
+  return dist.levels/(mu*(dist.levels - mu))
+sim_id 257: ipw_rd=-0.0757 gcomp_rd=-0.0830 aipw_rd=-0.0928 tmle_rd=-0.1026 scaipw_rd=-0.1036 sctmle_rd=-0.1038   [7 done, 1674.9s/dataset]

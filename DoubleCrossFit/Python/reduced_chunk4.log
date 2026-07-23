@@ -1,0 +1,13 @@
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/statsmodels/tsa/base/tsa_model.py:7: FutureWarning: pandas.Int64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
+  from pandas import (to_datetime, Int64Index, DatetimeIndex, Period,
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/statsmodels/tsa/base/tsa_model.py:7: FutureWarning: pandas.Float64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
+  from pandas import (to_datetime, Int64Index, DatetimeIndex, Period,
+/Users/nicolas/Desktop/Cambrdige RP/Project/publications-code/DoubleCrossFit/Python/.venv-pinned/lib/python3.9/site-packages/zepid/datasets/__init__.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+sim_id 751: ipw_rd=-0.1029 gcomp_rd=-0.0858 aipw_rd=-0.1133 tmle_rd=-0.1201 scaipw_rd=-0.1175 sctmle_rd=-0.1191   [1 done, 544.7s/dataset]
+sim_id 752: ipw_rd=-0.1084 gcomp_rd=-0.0817 aipw_rd=-0.1070 tmle_rd=-0.1123 scaipw_rd=-0.0996 sctmle_rd=-0.0989   [2 done, 542.2s/dataset]
+sim_id 753: ipw_rd=-0.1065 gcomp_rd=-0.0802 aipw_rd=-0.1006 tmle_rd=-0.1029 scaipw_rd=-0.0935 sctmle_rd=-0.1023   [3 done, 542.5s/dataset]
+sim_id 754: ipw_rd=-0.0939 gcomp_rd=-0.0798 aipw_rd=-0.1033 tmle_rd=-0.1110 scaipw_rd=-0.1150 sctmle_rd=-0.1117   [4 done, 1026.1s/dataset]
+sim_id 755: ipw_rd=-0.0850 gcomp_rd=-0.0635 aipw_rd=-0.0884 tmle_rd=-0.0952 scaipw_rd=-0.1058 sctmle_rd=-0.0945   [5 done, 1902.9s/dataset]
+sim_id 756: ipw_rd=-0.0766 gcomp_rd=-0.0643 aipw_rd=-0.0893 tmle_rd=-0.0948 scaipw_rd=-0.1040 sctmle_rd=-0.0890   [6 done, 1874.9s/dataset]
+sim_id 757: ipw_rd=-0.1194 gcomp_rd=-0.0873 aipw_rd=-0.1117 tmle_rd=-0.1130 scaipw_rd=-0.1222 sctmle_rd=-0.1173   [7 done, 1673.2s/dataset]
