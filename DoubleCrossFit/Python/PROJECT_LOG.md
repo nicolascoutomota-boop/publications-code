@@ -75,8 +75,25 @@ fits/dataset = 6 + 20k, where k = number of cross-fit repetitions.
         estimator object at runtime.
       - Earlier "~1 day" estimate was wrong: based on an over-optimistic 13 s/fit idle
         measurement; real sustained cost is ~45–70 s/fit on this throttling laptop.
-- [ ] Summary step: per method compute mean bias, ESE, ASE, and **two coverages** — one from
-      each method's own SE, one from the empirical SE (for g-comp, only the empirical one).
+- [x] **RUN COMPLETE 2026-07-26: all 1,000 datasets, 0 NaNs.** Merged to
+      `reduced_results_all.csv`; summary in `reduced_summary.csv` (`summarize_reduced.py`).
+
+### RESULTS (1,000 datasets, truth = -0.1081508)
+| method | bias | ESE | ASE | cov(own SE) | cov(true SE) |
+|---|---|---|---|---|---|
+| IPW | +0.0115 | 0.0210 | 0.0227 | 0.937 | 0.915 |
+| **G-computation (no bootstrap)** | **+0.0264** | 0.0167 | — | — | **0.640** |
+| AIPW | +0.0043 | 0.0192 | 0.0166 | 0.908 | 0.948 |
+| TMLE | -0.0014 | 0.0201 | 0.0165 | 0.901 | 0.952 |
+| AIPW 5-fold cross-fit | -0.0029 | 0.0235 | 0.0221 | 0.935 | 0.952 |
+| TMLE 5-fold cross-fit | +0.0008 | 0.0205 | 0.0205 | 0.938 | 0.956 |
+
+**Reproduces the paper's message.** With super-learner nuisance estimation, plug-in
+**g-computation is the most biased (+0.026) and its CIs cover only 64%** even using the true
+SE — a pure bias effect. The doubly-robust estimators (AIPW, TMLE) are near-unbiased, and the
+**cross-fit versions are best**: smallest bias and ~95% coverage both ways. Also visible:
+AIPW/TMLE *without* cross-fitting show own-SE coverage ~0.90 (slightly low, from in-sample
+nuisance fitting), which cross-fitting lifts back to ~0.95.
 
 ---
 
