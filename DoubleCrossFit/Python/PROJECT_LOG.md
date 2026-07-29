@@ -116,6 +116,39 @@ nuisance fitting), which cross-fitting lifts back to ~0.95.
   nuisances, True + Main-effects specs, sim_id 1-1000, seeded, resume-safe (~80 min).
   `build_table3.py` assembles the full 3-panel table → `table3_reproduction.csv`.
 
+### 2026-07-29 (later) — Shaun's confirmations + presentation spec + STUDY 3 LAUNCHED
+- **Meeting: Friday 4pm UK.**
+- **Presentation (11 Aug): 20 min total = 15 talk + 5 questions.** Audience: Biostatistics
+  Unit statisticians, mixed experience, many new to debiased ML. Suggested structure:
+  first half = essentials of debiased ML for ATE (why g-comp with data-adaptive nuisances
+  fails, why AIPW/TMLE are better), not too complicated; second half = why this simulation
+  work + results + 1-2 conclusions. Content to be discussed Friday.
+- Approvals: arms for g-computation only ✓; n=1500 via first 1,500 rows ✓; same datasets
+  for other studies where possible ✓ (we use sim_id 1-1000 throughout).
+- Table 3 sent to him (email_table3_draft.md).
+- **Study 3 running:** `study3_twomodel.py`, 2 detached chunks (ppid=1, caffeinate -ims),
+  ~45 s/dataset → ~6 h. Two-model g-computation; arm-specific formulas; 'true' spec
+  treated-arm includes ldl_130 (the interaction term active only under treatment in Z&B's
+  single-model formula). Records ey1/ey0/ate per spec per dataset.
+  NOTE: first launch attempt silently failed (zsh word-splitting in a loop) — caught by
+  verification; relaunched explicitly and confirmed computing.
+
+### 2026-07-29 — NEW PLAN from Shaun: g-computation only, three studies, arms tables
+- Rationale: time is short (presentations 11 Aug); the finished study already demonstrated
+  the DR+cross-fit fix, so he'll assume it works from here and focus on **g-computation's
+  failure modes**. He cares more about **E(Y^1) and E(Y^0) separately** than the ATE
+  (will explain why at the meeting).
+- Confirmed to him: stored results have no arms → g-comp-only re-runs will record them
+  (cheap); five-method ML arms would need the multi-day re-run (assumed not wanted).
+- **The three studies (g-computation ONLY, each → Table-3-format tables for ATE, E(Y^1),
+  E(Y^0); empirical-SE CIs):**
+  1. RF replacing the super learner (n=3000) — ~under 1 h compute
+  2. n=1500 (plan: first 1,500 rows of each existing dataset; flagged to him) — ~2-3 h
+  3. **START HERE (his priority):** two separate super learners for E(Y|X=1,Z) (fit on
+     treated) and E(Y|X=0,Z) (fit on untreated) — needs our own small driver (their
+     GFormula fits a single model with treatment as covariate) — ~half a day
+- Meeting to be scheduled (he'll explain the "why" + the algebra-based variant of #3).
+
 ## Correspondence & decisions (chronological)
 
 ### 2026-07-21 — Shaun's reduced-design proposal + my reply
