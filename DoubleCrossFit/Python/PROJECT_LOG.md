@@ -97,6 +97,25 @@ nuisance fitting), which cross-fitting lifts back to ~0.95.
 
 ---
 
+### 2026-07-28 — Shaun's post-results email + Table-3 deliverable
+- Deadline context: end-of-internship presentations 11 August.
+- Shaun listed 4 possible next runs (RF-only; two separate SLs for E[Y|X=1,Z]/E[Y|X=0,Z];
+  n=1500; a variant of #2) — explicitly said DON'T run yet; he'll prioritise.
+- Asked us to reproduce Z&B Table 3 (verified structure, paper p.9: 6 estimators x 3 specs,
+  cols Bias/RMSE/ASE/ESE/CLD/Coverage) with his two changes (g-comp empirical-SE CIs;
+  single instead of double cross-fit), plus later E(Y^1)/E(Y^0) versions (needs re-run —
+  nothing stored the arms; zepid SC classes only report the difference).
+- Timings measured for his questions: RF-only fit = 0.85s vs SL 17.8s (~1/20 → few hours);
+  n=1500 SL fit = 0.67x (→ 2-3 days); #2 est. +1/3 to +1/2 vs current.
+- **Important verified finding:** zepid SingleCrossfit trains each nuisance on ONE split
+  (n/5 = 600 obs), not the complementary 4/5 (textbook k-fold). Evaluation split i uses
+  models from split i-1 (cyclic). Same fit count, valid cross-fitting, but less training
+  data per nuisance → likely explains SC methods' larger ESE. Flagged to Shaun; textbook
+  version would need our own driver code.
+- **Table-3 completion run launched:** `sc_parametric.py` — SC-AIPW/SC-TMLE with parametric
+  nuisances, True + Main-effects specs, sim_id 1-1000, seeded, resume-safe (~80 min).
+  `build_table3.py` assembles the full 3-panel table → `table3_reproduction.csv`.
+
 ## Correspondence & decisions (chronological)
 
 ### 2026-07-21 — Shaun's reduced-design proposal + my reply
