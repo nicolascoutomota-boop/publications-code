@@ -71,9 +71,12 @@ for i, est in enumerate(ESTIMATORS):
         if j == 0:
             ax.set_ylabel(est, fontsize=9, rotation=90)
 
-fig.suptitle('Distribution of the 1,000 ATE estimates, by estimator and specification\n'
-             'Curve: fitted normal.  Dashed line: truth ($-0.108$).', fontsize=11)
-fig.supxlabel('Estimated ATE (risk difference)', fontsize=9)
+fig.suptitle('Histograms of the 1,000 estimates of the ATE $= E(Y^1) - E(Y^0)$,'
+             ' by estimator and specification\n'
+             'Curve: fitted normal.  Dashed line: truth ($-0.108$).'
+             '  [$E(Y^1)$ and $E(Y^0)$ histograms to follow from the g-computation studies]',
+             fontsize=10)
+fig.supxlabel('Estimated ATE $= E(Y^1) - E(Y^0)$ (risk difference)', fontsize=9)
 fig.tight_layout(rect=[0, 0.01, 1, 0.955])
 fig.savefig('histograms_ate.pdf')
 fig.savefig('/tmp/histograms_ate_preview.png', dpi=70)
