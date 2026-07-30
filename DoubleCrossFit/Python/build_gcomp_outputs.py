@@ -23,6 +23,9 @@ STUDIES = {
     '2': dict(files=['study2_results_0001_0500.csv', 'study2_results_0501_1000.csv'],
               title='Study 2 (super learner, n=1500)',
               ml_label='Machine learning', out='study2'),
+    'baseline': dict(files=['baseline_results_0001_0500.csv', 'baseline_results_0501_1000.csv'],
+                     title='Baseline (single-model g-computation, super learner, n=3000)',
+                     ml_label='Machine learning', out='baseline'),
 }
 
 for key, cfg in STUDIES.items():
