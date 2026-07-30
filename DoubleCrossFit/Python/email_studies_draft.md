@@ -17,7 +17,9 @@ Study 2 (n=1500): ATE bias +0.037, coverage 60%.
 Study 3 (two separate super learners): ATE bias +0.017, coverage 85%. Almost all of its
 bias is in E(Y^0); E(Y^1) is essentially unbiased.
 
-Happy to go through it all on Friday.
+Is there anything I should start on next, for example the further study you mentioned you
+would work out with some algebra? Otherwise I'll begin drafting the presentation along the
+structure you suggested, and we can go through everything on Friday.
 
 Best wishes,
 Nicolas
