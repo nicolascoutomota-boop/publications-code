@@ -57,14 +57,39 @@ def logit_est():
     return LogisticRegression(penalty='none', solver='lbfgs', max_iter=1000)
 
 
-def fit_predict(formula, fit_df, y, predict_df, estimator):
-    """Fit estimator on fit_df rows, return probability predictions for predict_df rows."""
+def fit_predict(formula, fit_df, y, predict_df, est_factory, retries=3, fallback=None):
+    """Fit a fresh estimator on fit_df rows; predict predict_df rows.
+
+    The authors' SuperLearner uses an UNSHUFFLED KFold, so its SLSQP weight step can
+    fail persistently for a given row order. Retries therefore PERMUTE the row order
+    (changing fold composition; the estimator itself is unchanged). If every attempt
+    fails and a fallback factory is given (logistic regression), use it and log loudly.
+    """
     Xf = np.asarray(patsy.dmatrix(formula + ' - 1', fit_df))
-    fm = estimator.fit(X=Xf, y=np.asarray(y))
     Xp = np.asarray(patsy.dmatrix(formula + ' - 1', predict_df))
-    if hasattr(fm, 'predict_proba'):
+    yv = np.asarray(y)
+    last = None
+    for attempt in range(retries + 1):
+        try:
+            if attempt == 0:
+                Xa, ya = Xf, yv
+            else:
+                perm = np.random.permutation(len(yv))
+                Xa, ya = Xf[perm], yv[perm]
+            fm = est_factory().fit(X=Xa, y=ya)
+            if hasattr(fm, 'predict_proba'):
+                return fm.predict_proba(Xp)[:, 1]
+            return fm.predict(Xp)
+        except Exception as e:
+            last = e
+            print(f"    fit retry {attempt+1} (row-shuffled) after: "
+                  f"{type(e).__name__}: {e}", flush=True)
+    if fallback is not None:
+        print("    FALLBACK: logistic regression used for this single nuisance fit "
+              "(super learner failed all attempts)", flush=True)
+        fm = fallback().fit(X=Xf, y=yv)
         return fm.predict_proba(Xp)[:, 1]
-    return fm.predict(Xp)
+    raise last
 
 
 def bound_p(p, lo, hi):
@@ -114,8 +139,9 @@ def run_spec(dfs, spec, make_ml, seed):
 
     np.random.seed(seed)
     # --- shared full-sample nuisances (2 fits) ---
-    pi = bound_p(fit_predict(g_f, dfs, dfs['statin'], dfs, est()), BOUND, 1 - BOUND)
-    m0 = fit_predict(m_f, untreated, untreated['Y'], dfs, est())
+    fb = None if is_para else logit_est
+    pi = bound_p(fit_predict(g_f, dfs, dfs['statin'], dfs, est, fallback=fb), BOUND, 1 - BOUND)
+    m0 = fit_predict(m_f, untreated, untreated['Y'], dfs, est, fallback=fb)
 
     out = {}
     for name, fn in [('gcomp', est_gcomp), ('ipw', est_ipw),
@@ -133,8 +159,8 @@ def run_spec(dfs, spec, make_ml, seed):
         train = dfs.iloc[folds[(i - 1) % 5]]              # nuisances from the previous fold
         train_untreated = train[train['statin'] == 0]
         evald = dfs.iloc[folds[i]]
-        pi_cf[folds[i]] = fit_predict(g_f, train, train['statin'], evald, est())
-        m0_cf[folds[i]] = fit_predict(m_f, train_untreated, train_untreated['Y'], evald, est())
+        pi_cf[folds[i]] = fit_predict(g_f, train, train['statin'], evald, est, fallback=fb)
+        m0_cf[folds[i]] = fit_predict(m_f, train_untreated, train_untreated['Y'], evald, est, fallback=fb)
     pi_cf = bound_p(pi_cf, BOUND, 1 - BOUND)
 
     # SC-AIPW: pooled pseudo-outcome mean; SE = sqrt(mean of within-fold IC variances / n)
@@ -198,7 +224,9 @@ def main():
         for spec in ['true', 'main', 'ml']:
             try:
                 r.update(run_spec(dfs, spec, ml_estimator, BASE_SEED + sid))
-            except Exception:
+            except Exception as e:
+                print(f"  SPEC FAILURE sim_id {sid} spec {spec}: {type(e).__name__}: {e}",
+                      flush=True)
                 for m in ['gcomp', 'ipw', 'aipw', 'tmle', 'scaipw', 'sctmle']:
                     r[f'{spec}_{m}_e0'] = r[f'{spec}_{m}_se'] = np.nan
         rows.append(r)
