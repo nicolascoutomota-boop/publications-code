@@ -14,11 +14,8 @@ The reproduced Table 3 is attached, as a PDF and as a CSV in case you want to co
 the numbers. It uses 1,000 datasets, with the two changes we agreed: g-computation's
 confidence intervals come from the empirical SE, and single cross-fit replaces double.
 
-On the coverage you are most interested in: g-computation under machine learning covers
-64%. Since its intervals are built from the empirical SE, that under-coverage is entirely
-due to bias, not to a bad variance estimate. The parametric rows are very close to the
-paper's published values, and g-computation's machine learning bias of 0.026 matches theirs
-exactly.
+G-computation under machine learning covers 64%. The parametric rows closely match the
+paper's published values.
 
 Study 3 is running and should be finished today; studies 1 and 2 will follow.
 

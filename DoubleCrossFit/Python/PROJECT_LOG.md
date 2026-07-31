@@ -149,6 +149,18 @@ nuisance fitting), which cross-fitting lifts back to ~0.95.
      GFormula fits a single model with treatment as covariate) — ~half a day
 - Meeting to be scheduled (he'll explain the "why" + the algebra-based variant of #3).
 
+### 2026-07-31 — meeting finding: slow convergence SEEN in the SE ratios
+Comparing the empirical SEs at n=3000 vs n=1500 (baseline / study 2, same datasets halved):
+if an estimator converges at rate n^(-a), halving n multiplies its SE by 2^a.
+- **Parametric specifications: SE ratio ≈ √2 = 2^(1/2)** — textbook root-n convergence,
+  exactly as theory predicts for correctly specified parametric models.
+- **Machine-learning g-computation: SE ratio ≈ 2^(1/3)** — consistent with a convergence
+  rate nearer n^(-1/3) than n^(-1/2). This is the "slow convergence" of data-adaptive
+  nuisance estimation observed DIRECTLY in the error scaling, not merely inferred from
+  bias/coverage. (Noted with Shaun at the 31 Jul meeting; exact per-cell ratios can be
+  recomputed from baseline_tables.csv / study2_tables.csv at any time. A cleaner version
+  could regress log(ESE) on log(n) if more sample sizes are ever run.)
+
 ## Correspondence & decisions (chronological)
 
 ### 2026-07-21 — Shaun's reduced-design proposal + my reply
