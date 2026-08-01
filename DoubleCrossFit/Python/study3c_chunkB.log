@@ -512,3 +512,363 @@ sim_id 803: ml aipw=0.3446 tmle=0.3496 scaipw=0.3544   [292 this run, 259.6s/dat
 sim_id 804: ml aipw=0.3488 tmle=0.3574 scaipw=0.3493   [293 this run, 260.1s/dataset]
 sim_id 805: ml aipw=0.3514 tmle=0.3533 scaipw=0.3497   [294 this run, 260.6s/dataset]
 sim_id 806: ml aipw=0.3421 tmle=0.3469 scaipw=0.3370   [295 this run, 261.1s/dataset]
+sim_id 807: ml aipw=0.3506 tmle=0.3508 scaipw=0.3869   [296 this run, 261.1s/dataset]
+sim_id 808: ml aipw=0.3384 tmle=0.3403 scaipw=0.4007   [297 this run, 261.0s/dataset]
+sim_id 809: ml aipw=0.3422 tmle=0.3438 scaipw=0.3487   [298 this run, 261.0s/dataset]
+sim_id 810: ml aipw=0.3543 tmle=0.3619 scaipw=0.3593   [299 this run, 260.8s/dataset]
+sim_id 811: ml aipw=0.3552 tmle=0.3681 scaipw=0.3606   [300 this run, 260.6s/dataset]
+did not converge
+sim_id 812: ml aipw=0.3463 tmle=0.3499 scaipw=0.3524   [301 this run, 260.3s/dataset]
+sim_id 813: ml aipw=0.3415 tmle=0.3463 scaipw=0.3481   [302 this run, 260.0s/dataset]
+sim_id 814: ml aipw=0.3575 tmle=0.3630 scaipw=0.3594   [303 this run, 259.7s/dataset]
+sim_id 815: ml aipw=0.3571 tmle=0.3598 scaipw=0.3597   [304 this run, 259.4s/dataset]
+sim_id 816: ml aipw=0.3440 tmle=0.3499 scaipw=0.3355   [305 this run, 259.1s/dataset]
+sim_id 817: ml aipw=0.3416 tmle=0.3454 scaipw=0.3346   [306 this run, 258.9s/dataset]
+sim_id 818: ml aipw=0.3344 tmle=0.3359 scaipw=0.3332   [307 this run, 258.7s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 819: ml aipw=0.3398 tmle=0.3441 scaipw=0.3428   [308 this run, 258.7s/dataset]
+sim_id 820: ml aipw=0.3285 tmle=0.3299 scaipw=0.3339   [309 this run, 258.8s/dataset]
+sim_id 821: ml aipw=0.3407 tmle=0.3457 scaipw=0.3683   [310 this run, 258.8s/dataset]
+sim_id 822: ml aipw=0.3243 tmle=0.3277 scaipw=0.3255   [311 this run, 258.9s/dataset]
+sim_id 823: ml aipw=0.3508 tmle=0.3507 scaipw=0.3496   [312 this run, 259.1s/dataset]
+sim_id 824: ml aipw=0.3348 tmle=0.3383 scaipw=0.3425   [313 this run, 259.2s/dataset]
+did not converge
+sim_id 825: ml aipw=0.3334 tmle=0.3375 scaipw=0.3283   [314 this run, 259.3s/dataset]
+sim_id 826: ml aipw=0.3521 tmle=0.3560 scaipw=0.3548   [315 this run, 259.4s/dataset]
+sim_id 827: ml aipw=0.3314 tmle=0.3365 scaipw=0.3249   [316 this run, 259.4s/dataset]
+sim_id 828: ml aipw=0.3592 tmle=0.3625 scaipw=0.3875   [317 this run, 259.4s/dataset]
+sim_id 829: ml aipw=0.3517 tmle=0.3555 scaipw=0.3510   [318 this run, 259.5s/dataset]
+sim_id 830: ml aipw=0.3567 tmle=0.3599 scaipw=0.3534   [319 this run, 259.5s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 831: ml aipw=0.3271 tmle=0.3307 scaipw=nan   [320 this run, 259.6s/dataset]
+did not converge
+did not converge
+did not converge
+sim_id 832: ml aipw=0.3556 tmle=0.3622 scaipw=0.3473   [321 this run, 259.6s/dataset]
+sim_id 833: ml aipw=0.3518 tmle=0.3575 scaipw=0.3081   [322 this run, 259.7s/dataset]
+sim_id 834: ml aipw=0.3226 tmle=0.3275 scaipw=0.3346   [323 this run, 259.7s/dataset]
+sim_id 835: ml aipw=0.3324 tmle=0.3344 scaipw=0.4172   [324 this run, 259.7s/dataset]
+sim_id 836: ml aipw=0.3677 tmle=0.3715 scaipw=0.3611   [325 this run, 259.8s/dataset]
+did not converge
+sim_id 837: ml aipw=0.3300 tmle=0.3375 scaipw=0.3430   [326 this run, 259.8s/dataset]
+did not converge
+sim_id 838: ml aipw=0.3408 tmle=0.3445 scaipw=0.3628   [327 this run, 259.9s/dataset]
+sim_id 839: ml aipw=0.3884 tmle=0.3930 scaipw=0.4157   [328 this run, 259.9s/dataset]
+sim_id 840: ml aipw=0.3354 tmle=0.3373 scaipw=0.3551   [329 this run, 260.0s/dataset]
+sim_id 841: ml aipw=0.3471 tmle=0.3538 scaipw=0.3465   [330 this run, 260.0s/dataset]
+sim_id 842: ml aipw=0.3576 tmle=0.3614 scaipw=0.3758   [331 this run, 260.4s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 843: ml aipw=0.2995 tmle=0.2981 scaipw=0.3572   [332 this run, 260.6s/dataset]
+sim_id 844: ml aipw=0.3302 tmle=0.3301 scaipw=0.3254   [333 this run, 260.7s/dataset]
+sim_id 845: ml aipw=0.3453 tmle=0.3470 scaipw=0.3465   [334 this run, 260.8s/dataset]
+sim_id 846: ml aipw=0.3453 tmle=0.3484 scaipw=0.3503   [335 this run, 260.8s/dataset]
+sim_id 847: ml aipw=0.3502 tmle=0.3525 scaipw=0.3550   [336 this run, 260.9s/dataset]
+sim_id 848: ml aipw=0.3521 tmle=0.3538 scaipw=0.3508   [337 this run, 260.9s/dataset]
+sim_id 849: ml aipw=0.3539 tmle=0.3571 scaipw=0.3547   [338 this run, 261.0s/dataset]
+sim_id 850: ml aipw=0.3385 tmle=0.3404 scaipw=0.3410   [339 this run, 261.0s/dataset]
+sim_id 851: ml aipw=0.3414 tmle=0.3442 scaipw=0.3201   [340 this run, 261.1s/dataset]
+sim_id 852: ml aipw=0.3455 tmle=0.3466 scaipw=0.3215   [341 this run, 261.0s/dataset]
+did not converge
+sim_id 853: ml aipw=0.3191 tmle=0.3220 scaipw=0.3244   [342 this run, 260.8s/dataset]
+did not converge
+sim_id 854: ml aipw=0.3288 tmle=0.3318 scaipw=0.3272   [343 this run, 260.6s/dataset]
+sim_id 855: ml aipw=0.3477 tmle=0.3550 scaipw=0.3477   [344 this run, 260.3s/dataset]
+did not converge
+sim_id 856: ml aipw=0.3602 tmle=0.3631 scaipw=0.3598   [345 this run, 260.1s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 2 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+did not converge
+    fit retry 3 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+did not converge
+sim_id 857: ml aipw=0.3497 tmle=0.3522 scaipw=0.3596   [346 this run, 259.9s/dataset]
+sim_id 858: ml aipw=0.3449 tmle=0.3482 scaipw=0.3440   [347 this run, 259.6s/dataset]
+sim_id 859: ml aipw=0.3354 tmle=0.3386 scaipw=0.3237   [348 this run, 259.4s/dataset]
+sim_id 860: ml aipw=0.3528 tmle=0.3547 scaipw=0.3555   [349 this run, 259.1s/dataset]
+did not converge
+sim_id 861: ml aipw=0.3171 tmle=0.3123 scaipw=0.3097   [350 this run, 258.9s/dataset]
+sim_id 862: ml aipw=0.3501 tmle=0.3513 scaipw=0.3517   [351 this run, 258.6s/dataset]
+sim_id 863: ml aipw=0.3404 tmle=0.3449 scaipw=0.3397   [352 this run, 258.4s/dataset]
+sim_id 864: ml aipw=0.3466 tmle=0.3509 scaipw=0.3414   [353 this run, 258.1s/dataset]
+sim_id 865: ml aipw=0.3654 tmle=0.3655 scaipw=0.3759   [354 this run, 257.9s/dataset]
+sim_id 866: ml aipw=0.3271 tmle=0.3283 scaipw=0.2901   [355 this run, 257.6s/dataset]
+sim_id 867: ml aipw=0.3302 tmle=0.3345 scaipw=0.3392   [356 this run, 257.4s/dataset]
+sim_id 868: ml aipw=0.3580 tmle=0.3579 scaipw=0.3769   [357 this run, 257.1s/dataset]
+sim_id 869: ml aipw=0.3202 tmle=0.3202 scaipw=0.3514   [358 this run, 256.9s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+sim_id 870: ml aipw=0.3168 tmle=0.3212 scaipw=0.3177   [359 this run, 256.7s/dataset]
+sim_id 871: ml aipw=0.3263 tmle=0.3359 scaipw=0.3385   [360 this run, 256.4s/dataset]
+sim_id 872: ml aipw=0.3535 tmle=0.3551 scaipw=0.3641   [361 this run, 256.2s/dataset]
+sim_id 873: ml aipw=0.3297 tmle=0.3337 scaipw=0.3739   [362 this run, 255.9s/dataset]
+sim_id 874: ml aipw=0.3454 tmle=0.3478 scaipw=0.3389   [363 this run, 255.7s/dataset]
+sim_id 875: ml aipw=0.3570 tmle=0.3603 scaipw=0.3545   [364 this run, 255.5s/dataset]
+sim_id 876: ml aipw=0.3573 tmle=0.3515 scaipw=0.3448   [365 this run, 255.2s/dataset]
+sim_id 877: ml aipw=0.3424 tmle=0.3471 scaipw=0.3483   [366 this run, 255.0s/dataset]
+sim_id 878: ml aipw=0.3440 tmle=0.3487 scaipw=0.3465   [367 this run, 254.8s/dataset]
+sim_id 879: ml aipw=0.3291 tmle=0.3307 scaipw=0.3344   [368 this run, 254.5s/dataset]
+did not converge
+sim_id 880: ml aipw=0.3133 tmle=0.3130 scaipw=0.3204   [369 this run, 254.3s/dataset]
+did not converge
+sim_id 881: ml aipw=0.3466 tmle=0.3517 scaipw=0.3444   [370 this run, 254.1s/dataset]
+sim_id 882: ml aipw=0.3266 tmle=0.3286 scaipw=0.3244   [371 this run, 253.9s/dataset]
+sim_id 883: ml aipw=0.3496 tmle=0.3505 scaipw=0.3550   [372 this run, 253.6s/dataset]
+sim_id 884: ml aipw=0.3405 tmle=0.3455 scaipw=0.2820   [373 this run, 253.4s/dataset]
+sim_id 885: ml aipw=0.3443 tmle=0.3487 scaipw=0.3507   [374 this run, 253.2s/dataset]
+sim_id 886: ml aipw=0.3514 tmle=0.3577 scaipw=0.2800   [375 this run, 253.0s/dataset]
+sim_id 887: ml aipw=0.3468 tmle=0.3496 scaipw=0.3726   [376 this run, 252.7s/dataset]
+sim_id 888: ml aipw=0.3240 tmle=0.3262 scaipw=0.3307   [377 this run, 252.5s/dataset]
+did not converge
+did not converge
+sim_id 889: ml aipw=0.3423 tmle=0.3437 scaipw=0.3536   [378 this run, 252.3s/dataset]
+sim_id 890: ml aipw=0.3314 tmle=0.3333 scaipw=0.3307   [379 this run, 252.1s/dataset]
+sim_id 891: ml aipw=0.3425 tmle=0.3450 scaipw=0.3406   [380 this run, 251.8s/dataset]
+sim_id 892: ml aipw=0.3654 tmle=0.3643 scaipw=0.4217   [381 this run, 251.6s/dataset]
+sim_id 893: ml aipw=0.3333 tmle=0.3401 scaipw=0.3273   [382 this run, 251.4s/dataset]
+sim_id 894: ml aipw=0.3229 tmle=0.3278 scaipw=0.3405   [383 this run, 251.2s/dataset]
+sim_id 895: ml aipw=0.3264 tmle=0.3349 scaipw=0.2750   [384 this run, 251.0s/dataset]
+sim_id 896: ml aipw=0.3461 tmle=0.3493 scaipw=0.3489   [385 this run, 250.8s/dataset]
+sim_id 897: ml aipw=0.3388 tmle=0.3411 scaipw=0.3501   [386 this run, 250.5s/dataset]
+sim_id 898: ml aipw=0.3469 tmle=0.3488 scaipw=0.3414   [387 this run, 250.3s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+sim_id 899: ml aipw=0.3417 tmle=0.3441 scaipw=0.4018   [388 this run, 250.2s/dataset]
+sim_id 900: ml aipw=0.3445 tmle=0.3497 scaipw=0.3425   [389 this run, 250.0s/dataset]
+sim_id 901: ml aipw=0.3200 tmle=0.3226 scaipw=0.3270   [390 this run, 249.8s/dataset]
+sim_id 902: ml aipw=0.3530 tmle=0.3577 scaipw=0.3372   [391 this run, 249.5s/dataset]
+sim_id 903: ml aipw=0.3361 tmle=0.3388 scaipw=0.3374   [392 this run, 249.3s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 904: ml aipw=0.3521 tmle=0.3538 scaipw=0.3531   [393 this run, 249.1s/dataset]
+sim_id 905: ml aipw=0.3258 tmle=0.3298 scaipw=0.4242   [394 this run, 248.9s/dataset]
+sim_id 906: ml aipw=0.3522 tmle=0.3524 scaipw=0.3478   [395 this run, 248.7s/dataset]
+sim_id 907: ml aipw=0.3465 tmle=0.3490 scaipw=0.3407   [396 this run, 248.5s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+sim_id 908: ml aipw=0.3373 tmle=0.3406 scaipw=0.3332   [397 this run, 248.3s/dataset]
+did not converge
+sim_id 909: ml aipw=0.3185 tmle=0.3270 scaipw=0.3201   [398 this run, 248.1s/dataset]
+sim_id 910: ml aipw=0.3308 tmle=0.3358 scaipw=0.3291   [399 this run, 247.9s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 911: ml aipw=0.3317 tmle=0.3344 scaipw=0.3355   [400 this run, 247.7s/dataset]
+sim_id 912: ml aipw=0.3255 tmle=0.3280 scaipw=0.3329   [401 this run, 247.5s/dataset]
+sim_id 913: ml aipw=0.3252 tmle=0.3271 scaipw=0.3327   [402 this run, 247.3s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 914: ml aipw=0.3386 tmle=0.3466 scaipw=0.3506   [403 this run, 247.1s/dataset]
+sim_id 915: ml aipw=0.3380 tmle=0.3409 scaipw=0.3347   [404 this run, 246.9s/dataset]
+sim_id 916: ml aipw=0.3377 tmle=0.3475 scaipw=0.3537   [405 this run, 246.7s/dataset]
+sim_id 917: ml aipw=0.3266 tmle=0.3346 scaipw=0.3338   [406 this run, 246.5s/dataset]
+sim_id 918: ml aipw=0.3483 tmle=0.3503 scaipw=0.3745   [407 this run, 246.3s/dataset]
+sim_id 919: ml aipw=0.3252 tmle=0.3304 scaipw=0.3413   [408 this run, 246.2s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 920: ml aipw=0.3434 tmle=0.3460 scaipw=0.3485   [409 this run, 246.0s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 921: ml aipw=0.3447 tmle=0.3505 scaipw=0.3408   [410 this run, 245.8s/dataset]
+sim_id 922: ml aipw=0.3300 tmle=0.3364 scaipw=0.3312   [411 this run, 245.6s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 923: ml aipw=0.3412 tmle=0.3424 scaipw=0.3386   [412 this run, 245.4s/dataset]
+sim_id 924: ml aipw=0.3546 tmle=0.3608 scaipw=0.3585   [413 this run, 245.3s/dataset]
+did not converge
+did not converge
+sim_id 925: ml aipw=0.3247 tmle=0.3321 scaipw=0.3290   [414 this run, 245.2s/dataset]
+sim_id 926: ml aipw=0.3188 tmle=0.3230 scaipw=0.3225   [415 this run, 245.0s/dataset]
+sim_id 927: ml aipw=0.3298 tmle=0.3326 scaipw=0.3359   [416 this run, 244.8s/dataset]
+sim_id 928: ml aipw=0.3409 tmle=0.3428 scaipw=0.3343   [417 this run, 244.6s/dataset]
+sim_id 929: ml aipw=0.3351 tmle=0.3380 scaipw=0.3372   [418 this run, 244.4s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 2 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+sim_id 930: ml aipw=0.3452 tmle=0.3467 scaipw=0.3464   [419 this run, 244.3s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 931: ml aipw=0.3335 tmle=0.3393 scaipw=0.3375   [420 this run, 244.1s/dataset]
+sim_id 932: ml aipw=0.3512 tmle=0.3530 scaipw=0.3591   [421 this run, 243.9s/dataset]
+sim_id 933: ml aipw=0.3419 tmle=0.3475 scaipw=0.3348   [422 this run, 243.7s/dataset]
+sim_id 934: ml aipw=0.3620 tmle=0.3677 scaipw=0.3596   [423 this run, 243.5s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 935: ml aipw=0.3501 tmle=0.3538 scaipw=0.3677   [424 this run, 243.4s/dataset]
+sim_id 936: ml aipw=0.3284 tmle=0.3329 scaipw=0.3298   [425 this run, 243.2s/dataset]
+sim_id 937: ml aipw=0.3330 tmle=0.3366 scaipw=0.3425   [426 this run, 243.0s/dataset]
+sim_id 938: ml aipw=0.3567 tmle=0.3610 scaipw=0.3611   [427 this run, 242.8s/dataset]
+sim_id 939: ml aipw=0.3600 tmle=0.3581 scaipw=0.4098   [428 this run, 242.6s/dataset]
+sim_id 940: ml aipw=0.3620 tmle=0.3642 scaipw=0.3491   [429 this run, 242.5s/dataset]
+sim_id 941: ml aipw=0.3541 tmle=0.3593 scaipw=0.3739   [430 this run, 242.3s/dataset]
+sim_id 942: ml aipw=0.3506 tmle=0.3537 scaipw=0.3881   [431 this run, 242.1s/dataset]
+sim_id 943: ml aipw=0.3462 tmle=0.3543 scaipw=0.3393   [432 this run, 241.9s/dataset]
+sim_id 944: ml aipw=0.3401 tmle=0.3417 scaipw=0.4818   [433 this run, 241.7s/dataset]
+sim_id 945: ml aipw=0.3498 tmle=0.3531 scaipw=0.3376   [434 this run, 241.6s/dataset]
+sim_id 946: ml aipw=0.3371 tmle=0.3421 scaipw=0.3528   [435 this run, 241.4s/dataset]
+sim_id 947: ml aipw=0.3378 tmle=0.3370 scaipw=0.3280   [436 this run, 241.2s/dataset]
+sim_id 948: ml aipw=0.3270 tmle=0.3304 scaipw=0.3290   [437 this run, 241.0s/dataset]
+sim_id 949: ml aipw=0.3403 tmle=0.3456 scaipw=0.3429   [438 this run, 240.9s/dataset]
+sim_id 950: ml aipw=0.3333 tmle=0.3364 scaipw=0.3288   [439 this run, 240.7s/dataset]
+sim_id 951: ml aipw=0.3328 tmle=0.3334 scaipw=0.2583   [440 this run, 240.5s/dataset]
+sim_id 952: ml aipw=0.3337 tmle=0.3396 scaipw=0.3281   [441 this run, 240.3s/dataset]
+sim_id 953: ml aipw=0.3404 tmle=0.3424 scaipw=0.3493   [442 this run, 240.2s/dataset]
+sim_id 954: ml aipw=0.3461 tmle=0.3482 scaipw=0.3853   [443 this run, 240.0s/dataset]
+sim_id 955: ml aipw=0.3502 tmle=0.3517 scaipw=0.3418   [444 this run, 239.8s/dataset]
+sim_id 956: ml aipw=0.3372 tmle=0.3383 scaipw=0.3351   [445 this run, 239.7s/dataset]
+sim_id 957: ml aipw=0.3436 tmle=0.3487 scaipw=0.2853   [446 this run, 239.5s/dataset]
+sim_id 958: ml aipw=0.3437 tmle=0.3487 scaipw=0.3353   [447 this run, 239.3s/dataset]
+did not converge
+sim_id 959: ml aipw=0.3272 tmle=0.3256 scaipw=0.3321   [448 this run, 239.2s/dataset]
+sim_id 960: ml aipw=0.3382 tmle=0.3448 scaipw=0.4186   [449 this run, 239.0s/dataset]
+sim_id 961: ml aipw=0.3361 tmle=0.3390 scaipw=0.3275   [450 this run, 238.9s/dataset]
+did not converge
+did not converge
+did not converge
+    fit retry 1 (row-shuffled) after: SLError: fmin_slsqp failed when trying to calculate coefficients
+did not converge
+sim_id 962: ml aipw=0.3253 tmle=0.3311 scaipw=0.3406   [451 this run, 238.7s/dataset]
+sim_id 963: ml aipw=0.3301 tmle=0.3346 scaipw=0.3383   [452 this run, 238.6s/dataset]
+sim_id 964: ml aipw=0.3273 tmle=0.3300 scaipw=0.3321   [453 this run, 238.4s/dataset]
+sim_id 965: ml aipw=0.3298 tmle=0.3329 scaipw=0.3405   [454 this run, 238.3s/dataset]
+sim_id 966: ml aipw=0.3270 tmle=0.3311 scaipw=0.3723   [455 this run, 238.1s/dataset]
+did not converge
+sim_id 967: ml aipw=0.3378 tmle=0.3399 scaipw=0.3399   [456 this run, 237.9s/dataset]
+sim_id 968: ml aipw=0.3571 tmle=0.3611 scaipw=0.3741   [457 this run, 237.8s/dataset]
+sim_id 969: ml aipw=0.3495 tmle=0.3484 scaipw=0.3504   [458 this run, 237.6s/dataset]
+sim_id 970: ml aipw=0.3439 tmle=0.3460 scaipw=0.3394   [459 this run, 237.5s/dataset]
+sim_id 971: ml aipw=0.3202 tmle=0.3256 scaipw=0.3152   [460 this run, 237.3s/dataset]
+sim_id 972: ml aipw=0.3367 tmle=0.3327 scaipw=0.3491   [461 this run, 237.2s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 973: ml aipw=0.3441 tmle=0.3461 scaipw=0.3573   [462 this run, 237.0s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 974: ml aipw=0.3232 tmle=0.3234 scaipw=0.3295   [463 this run, 236.9s/dataset]
+sim_id 975: ml aipw=0.3380 tmle=0.3379 scaipw=0.3505   [464 this run, 236.7s/dataset]
+sim_id 976: ml aipw=0.3624 tmle=0.3651 scaipw=0.3886   [465 this run, 236.6s/dataset]
+sim_id 977: ml aipw=0.3324 tmle=0.3333 scaipw=0.3346   [466 this run, 236.4s/dataset]
+did not converge
+sim_id 978: ml aipw=0.3479 tmle=0.3493 scaipw=0.3641   [467 this run, 236.3s/dataset]
+sim_id 979: ml aipw=0.3316 tmle=0.3384 scaipw=0.3300   [468 this run, 236.1s/dataset]
+sim_id 980: ml aipw=0.3305 tmle=0.3416 scaipw=0.3376   [469 this run, 236.0s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 981: ml aipw=0.3402 tmle=0.3465 scaipw=0.3641   [470 this run, 235.9s/dataset]
+sim_id 982: ml aipw=0.3517 tmle=0.3534 scaipw=0.3505   [471 this run, 235.7s/dataset]
+sim_id 983: ml aipw=0.3473 tmle=0.3505 scaipw=0.3599   [472 this run, 235.6s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 2 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 3 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 4 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    FALLBACK: logistic regression used for this single nuisance fit (super learner failed all attempts)
+sim_id 984: ml aipw=0.3373 tmle=0.3372 scaipw=0.3572   [473 this run, 235.5s/dataset]
+sim_id 985: ml aipw=0.3236 tmle=0.3307 scaipw=0.3317   [474 this run, 235.5s/dataset]
+sim_id 986: ml aipw=0.3503 tmle=0.3547 scaipw=0.3741   [475 this run, 235.5s/dataset]
+sim_id 987: ml aipw=0.3491 tmle=0.3531 scaipw=0.3481   [476 this run, 235.3s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 988: ml aipw=0.3628 tmle=0.3641 scaipw=0.3654   [477 this run, 235.2s/dataset]
+sim_id 989: ml aipw=0.3407 tmle=0.3428 scaipw=0.3493   [478 this run, 235.1s/dataset]
+did not converge
+sim_id 990: ml aipw=0.3316 tmle=0.3371 scaipw=0.3399   [479 this run, 234.9s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 991: ml aipw=0.3693 tmle=0.3715 scaipw=0.3749   [480 this run, 234.8s/dataset]
+sim_id 992: ml aipw=0.3219 tmle=0.3253 scaipw=0.3193   [481 this run, 234.6s/dataset]
+sim_id 993: ml aipw=0.3519 tmle=0.3560 scaipw=0.3809   [482 this run, 234.5s/dataset]
+sim_id 994: ml aipw=0.3307 tmle=0.3333 scaipw=0.3388   [483 this run, 234.4s/dataset]
+sim_id 995: ml aipw=0.3489 tmle=0.3504 scaipw=0.3522   [484 this run, 234.3s/dataset]
+did not converge
+sim_id 996: ml aipw=0.3309 tmle=0.3365 scaipw=0.3253   [485 this run, 234.1s/dataset]
+sim_id 997: ml aipw=0.3520 tmle=0.3538 scaipw=0.3653   [486 this run, 234.0s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 2 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+did not converge
+sim_id 998: ml aipw=0.3424 tmle=0.3463 scaipw=0.3475   [487 this run, 233.8s/dataset]
+sim_id 999: ml aipw=0.3383 tmle=0.3424 scaipw=0.3537   [488 this run, 233.6s/dataset]
+did not converge
+sim_id 1000: ml aipw=0.3135 tmle=0.3138 scaipw=0.4512   [489 this run, 233.4s/dataset]
+
+Done: 500 -> study3c_results_0501_1000.csv in 1902.4 min

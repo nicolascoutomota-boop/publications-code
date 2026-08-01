@@ -1,0 +1,292 @@
+sim_id 501: ml aipw=0.3381 tmle=0.3377 scaipw=0.3626   [1 this run, 144.5s/dataset]
+sim_id 502: ml aipw=0.3429 tmle=0.3486 scaipw=0.4701   [2 this run, 147.3s/dataset]
+did not converge
+sim_id 503: ml aipw=0.3474 tmle=0.3492 scaipw=0.3442   [3 this run, 148.0s/dataset]
+sim_id 504: ml aipw=0.3493 tmle=0.3527 scaipw=0.2809   [4 this run, 152.5s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 2 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 3 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 4 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    FALLBACK: logistic regression used for this single nuisance fit (super learner failed all attempts)
+sim_id 505: ml aipw=0.3349 tmle=0.3398 scaipw=0.3576   [5 this run, 156.8s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+sim_id 506: ml aipw=0.3383 tmle=0.3413 scaipw=0.3267   [6 this run, 157.2s/dataset]
+sim_id 507: ml aipw=0.3296 tmle=0.3381 scaipw=0.3437   [7 this run, 156.4s/dataset]
+sim_id 508: ml aipw=0.3309 tmle=0.3316 scaipw=0.3306   [8 this run, 156.0s/dataset]
+sim_id 509: ml aipw=0.3617 tmle=0.3690 scaipw=0.3597   [9 this run, 155.7s/dataset]
+sim_id 510: ml aipw=0.3231 tmle=0.3234 scaipw=0.3416   [10 this run, 155.3s/dataset]
+sim_id 511: ml aipw=0.3210 tmle=0.3231 scaipw=0.3299   [11 this run, 155.0s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+sim_id 512: ml aipw=0.3506 tmle=0.3513 scaipw=0.3562   [12 this run, 155.3s/dataset]
+sim_id 513: ml aipw=0.3414 tmle=0.3458 scaipw=0.3455   [13 this run, 155.1s/dataset]
+sim_id 514: ml aipw=0.3538 tmle=0.3549 scaipw=0.3384   [14 this run, 154.9s/dataset]
+sim_id 515: ml aipw=0.3464 tmle=0.3526 scaipw=0.4628   [15 this run, 154.8s/dataset]
+sim_id 516: ml aipw=0.3488 tmle=0.3598 scaipw=0.4639   [16 this run, 154.7s/dataset]
+sim_id 517: ml aipw=0.3309 tmle=0.3325 scaipw=0.3326   [17 this run, 154.7s/dataset]
+did not converge
+sim_id 518: ml aipw=0.3516 tmle=0.3529 scaipw=0.3601   [18 this run, 154.6s/dataset]
+sim_id 519: ml aipw=0.3253 tmle=0.3258 scaipw=0.3965   [19 this run, 154.7s/dataset]
+sim_id 520: ml aipw=0.3631 tmle=0.3649 scaipw=0.3615   [20 this run, 154.7s/dataset]
+sim_id 521: ml aipw=0.3550 tmle=0.3564 scaipw=0.3882   [21 this run, 154.7s/dataset]
+sim_id 522: ml aipw=0.3278 tmle=0.3323 scaipw=0.3358   [22 this run, 154.7s/dataset]
+sim_id 523: ml aipw=0.3697 tmle=0.3732 scaipw=0.4347   [23 this run, 154.6s/dataset]
+sim_id 524: ml aipw=0.3332 tmle=0.3351 scaipw=0.3275   [24 this run, 154.5s/dataset]
+sim_id 525: ml aipw=0.3438 tmle=0.3493 scaipw=0.4229   [25 this run, 154.6s/dataset]
+sim_id 526: ml aipw=0.3227 tmle=0.3303 scaipw=0.3147   [26 this run, 154.6s/dataset]
+sim_id 527: ml aipw=0.3188 tmle=0.3222 scaipw=0.3285   [27 this run, 154.6s/dataset]
+sim_id 528: ml aipw=0.3423 tmle=0.3469 scaipw=0.3341   [28 this run, 155.3s/dataset]
+sim_id 529: ml aipw=0.3182 tmle=0.3194 scaipw=0.3197   [29 this run, 155.4s/dataset]
+sim_id 530: ml aipw=0.3335 tmle=0.3348 scaipw=0.3718   [30 this run, 155.5s/dataset]
+sim_id 531: ml aipw=0.3613 tmle=0.3674 scaipw=0.5667   [31 this run, 156.7s/dataset]
+sim_id 532: ml aipw=0.3314 tmle=0.3373 scaipw=0.3158   [32 this run, 158.2s/dataset]
+sim_id 533: ml aipw=0.3308 tmle=0.3392 scaipw=0.3290   [33 this run, 160.1s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 2 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+did not converge
+did not converge
+did not converge
+sim_id 534: ml aipw=0.3348 tmle=0.3370 scaipw=0.3898   [34 this run, 161.8s/dataset]
+sim_id 535: ml aipw=0.2969 tmle=0.3008 scaipw=0.3777   [35 this run, 162.2s/dataset]
+sim_id 536: ml aipw=0.3528 tmle=0.3555 scaipw=0.3712   [36 this run, 162.4s/dataset]
+did not converge
+sim_id 537: ml aipw=0.3258 tmle=0.3371 scaipw=0.3369   [37 this run, 166.8s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+sim_id 538: ml aipw=0.3371 tmle=0.3431 scaipw=0.3590   [38 this run, 173.6s/dataset]
+sim_id 539: ml aipw=0.3584 tmle=0.3597 scaipw=0.4152   [39 this run, 180.6s/dataset]
+sim_id 540: ml aipw=0.3574 tmle=0.3597 scaipw=0.3313   [40 this run, 186.9s/dataset]
+sim_id 541: ml aipw=0.3396 tmle=0.3436 scaipw=0.3127   [41 this run, 193.3s/dataset]
+did not converge
+sim_id 542: ml aipw=0.3404 tmle=0.3430 scaipw=0.6254   [42 this run, 199.2s/dataset]
+sim_id 543: ml aipw=0.3338 tmle=0.3357 scaipw=0.3411   [43 this run, 204.7s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 2 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 3 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 4 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    FALLBACK: logistic regression used for this single nuisance fit (super learner failed all attempts)
+sim_id 544: ml aipw=0.3355 tmle=0.3438 scaipw=0.3482   [44 this run, 209.6s/dataset]
+sim_id 545: ml aipw=0.3282 tmle=0.3363 scaipw=0.4121   [45 this run, 214.5s/dataset]
+did not converge
+did not converge
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+did not converge
+did not converge
+sim_id 546: ml aipw=0.3431 tmle=0.3452 scaipw=0.3375   [46 this run, 219.0s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+did not converge
+did not converge
+did not converge
+sim_id 547: ml aipw=0.3473 tmle=0.3513 scaipw=0.4279   [47 this run, 219.6s/dataset]
+did not converge
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+did not converge
+    fit retry 2 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 3 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 4 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    FALLBACK: logistic regression used for this single nuisance fit (super learner failed all attempts)
+sim_id 548: ml aipw=0.3064 tmle=0.3077 scaipw=0.3147   [48 this run, 218.7s/dataset]
+sim_id 549: ml aipw=0.3413 tmle=0.3488 scaipw=0.3861   [49 this run, 217.5s/dataset]
+sim_id 550: ml aipw=0.3381 tmle=0.3414 scaipw=0.3481   [50 this run, 216.3s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 2 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 3 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 4 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    FALLBACK: logistic regression used for this single nuisance fit (super learner failed all attempts)
+sim_id 551: ml aipw=0.3676 tmle=0.3723 scaipw=0.3737   [51 this run, 215.2s/dataset]
+sim_id 552: ml aipw=0.3301 tmle=0.3368 scaipw=0.3270   [52 this run, 214.0s/dataset]
+did not converge
+did not converge
+sim_id 553: ml aipw=0.3469 tmle=0.3503 scaipw=0.5495   [53 this run, 212.9s/dataset]
+sim_id 554: ml aipw=0.3053 tmle=0.3188 scaipw=0.3013   [54 this run, 212.3s/dataset]
+sim_id 555: ml aipw=0.3155 tmle=0.3301 scaipw=0.3181   [55 this run, 214.1s/dataset]
+sim_id 556: ml aipw=0.3304 tmle=0.3338 scaipw=0.3319   [56 this run, 214.2s/dataset]
+sim_id 557: ml aipw=0.3160 tmle=0.3175 scaipw=0.3111   [57 this run, 214.5s/dataset]
+did not converge
+sim_id 558: ml aipw=0.3651 tmle=0.3668 scaipw=0.3461   [58 this run, 214.4s/dataset]
+sim_id 559: ml aipw=0.3532 tmle=0.3534 scaipw=0.4120   [59 this run, 214.5s/dataset]
+sim_id 560: ml aipw=0.3156 tmle=0.3248 scaipw=0.3392   [60 this run, 214.5s/dataset]
+sim_id 561: ml aipw=0.3560 tmle=0.3638 scaipw=0.4705   [61 this run, 214.5s/dataset]
+sim_id 562: ml aipw=0.3246 tmle=0.3466 scaipw=0.2749   [62 this run, 214.5s/dataset]
+sim_id 563: ml aipw=0.3289 tmle=0.3344 scaipw=0.4915   [63 this run, 214.5s/dataset]
+sim_id 564: ml aipw=0.3102 tmle=0.3174 scaipw=0.3104   [64 this run, 214.4s/dataset]
+did not converge
+sim_id 565: ml aipw=0.3131 tmle=0.3240 scaipw=0.3311   [65 this run, 214.4s/dataset]
+sim_id 566: ml aipw=0.3435 tmle=0.3452 scaipw=0.3307   [66 this run, 214.5s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 2 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+did not converge
+sim_id 567: ml aipw=0.3561 tmle=0.3619 scaipw=0.3627   [67 this run, 214.7s/dataset]
+sim_id 568: ml aipw=0.3395 tmle=0.3430 scaipw=0.2821   [68 this run, 214.6s/dataset]
+sim_id 569: ml aipw=0.3172 tmle=0.3208 scaipw=0.3076   [69 this run, 214.6s/dataset]
+sim_id 570: ml aipw=0.3621 tmle=0.3627 scaipw=0.3593   [70 this run, 214.7s/dataset]
+sim_id 571: ml aipw=0.3334 tmle=0.3368 scaipw=0.3903   [71 this run, 214.7s/dataset]
+sim_id 572: ml aipw=0.3391 tmle=0.3399 scaipw=0.2868   [72 this run, 214.7s/dataset]
+sim_id 573: ml aipw=0.3159 tmle=0.3177 scaipw=0.3401   [73 this run, 214.8s/dataset]
+did not converge
+sim_id 574: ml aipw=0.3454 tmle=0.3506 scaipw=0.4580   [74 this run, 214.8s/dataset]
+sim_id 575: ml aipw=0.3376 tmle=0.3447 scaipw=0.6223   [75 this run, 214.8s/dataset]
+sim_id 576: ml aipw=0.3350 tmle=0.3376 scaipw=0.3985   [76 this run, 214.7s/dataset]
+sim_id 577: ml aipw=0.3303 tmle=0.3323 scaipw=0.3157   [77 this run, 214.7s/dataset]
+sim_id 578: ml aipw=0.3127 tmle=0.3172 scaipw=0.3066   [78 this run, 214.7s/dataset]
+sim_id 579: ml aipw=0.3473 tmle=0.3490 scaipw=0.3962   [79 this run, 214.7s/dataset]
+did not converge
+sim_id 580: ml aipw=0.3197 tmle=0.3259 scaipw=0.3406   [80 this run, 214.7s/dataset]
+sim_id 581: ml aipw=0.3386 tmle=0.3405 scaipw=0.3747   [81 this run, 214.6s/dataset]
+sim_id 582: ml aipw=0.3342 tmle=0.3382 scaipw=0.4587   [82 this run, 214.6s/dataset]
+sim_id 583: ml aipw=0.3426 tmle=0.3484 scaipw=0.2923   [83 this run, 214.6s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+did not converge
+sim_id 584: ml aipw=0.3423 tmle=0.3460 scaipw=0.3415   [84 this run, 214.6s/dataset]
+sim_id 585: ml aipw=0.3355 tmle=0.3454 scaipw=0.3740   [85 this run, 214.8s/dataset]
+sim_id 586: ml aipw=0.3411 tmle=0.3435 scaipw=0.3643   [86 this run, 215.0s/dataset]
+sim_id 587: ml aipw=0.3118 tmle=0.3245 scaipw=0.3339   [87 this run, 215.1s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 588: ml aipw=0.3445 tmle=0.3484 scaipw=0.3465   [88 this run, 215.1s/dataset]
+sim_id 589: ml aipw=0.3739 tmle=0.3759 scaipw=0.3613   [89 this run, 215.1s/dataset]
+sim_id 590: ml aipw=0.3474 tmle=0.3545 scaipw=0.3190   [90 this run, 215.1s/dataset]
+sim_id 591: ml aipw=0.3310 tmle=0.3342 scaipw=0.4076   [91 this run, 215.2s/dataset]
+sim_id 592: ml aipw=0.3514 tmle=0.3555 scaipw=0.4276   [92 this run, 215.2s/dataset]
+sim_id 593: ml aipw=0.3397 tmle=0.3452 scaipw=0.3831   [93 this run, 215.2s/dataset]
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 594: ml aipw=0.3314 tmle=0.3341 scaipw=0.4876   [94 this run, 215.5s/dataset]
+sim_id 595: ml aipw=0.3342 tmle=0.3372 scaipw=0.3264   [95 this run, 215.5s/dataset]
+sim_id 596: ml aipw=0.3393 tmle=0.3450 scaipw=0.3179   [96 this run, 215.5s/dataset]
+sim_id 597: ml aipw=0.3687 tmle=0.3798 scaipw=0.4617   [97 this run, 215.4s/dataset]
+sim_id 598: ml aipw=0.3723 tmle=0.3770 scaipw=0.4200   [98 this run, 215.2s/dataset]
+did not converge
+sim_id 599: ml aipw=0.3498 tmle=0.3570 scaipw=0.3933   [99 this run, 214.5s/dataset]
+sim_id 600: ml aipw=0.3400 tmle=0.3456 scaipw=0.3424   [100 this run, 213.9s/dataset]
+did not converge
+sim_id 601: ml aipw=0.3330 tmle=0.3350 scaipw=0.3360   [101 this run, 213.2s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+did not converge
+    fit retry 2 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 3 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+did not converge
+    fit retry 4 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    FALLBACK: logistic regression used for this single nuisance fit (super learner failed all attempts)
+sim_id 602: ml aipw=0.3225 tmle=0.3236 scaipw=0.3097   [102 this run, 212.7s/dataset]
+sim_id 603: ml aipw=0.3241 tmle=0.3328 scaipw=0.3441   [103 this run, 212.1s/dataset]
+sim_id 604: ml aipw=0.3300 tmle=0.3334 scaipw=0.3168   [104 this run, 211.5s/dataset]
+sim_id 605: ml aipw=0.3653 tmle=0.3695 scaipw=0.3557   [105 this run, 210.9s/dataset]
+sim_id 606: ml aipw=0.3407 tmle=0.3415 scaipw=0.3544   [106 this run, 210.3s/dataset]
+sim_id 607: ml aipw=0.3387 tmle=0.3429 scaipw=0.4107   [107 this run, 209.7s/dataset]
+sim_id 608: ml aipw=0.3440 tmle=0.3488 scaipw=0.4022   [108 this run, 209.1s/dataset]
+did not converge
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 2 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 3 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 4 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    FALLBACK: logistic regression used for this single nuisance fit (super learner failed all attempts)
+sim_id 609: ml aipw=0.3150 tmle=0.3160 scaipw=0.5476   [109 this run, 208.5s/dataset]
+sim_id 610: ml aipw=0.3454 tmle=0.3492 scaipw=0.3379   [110 this run, 208.0s/dataset]
+sim_id 611: ml aipw=0.2986 tmle=0.3095 scaipw=0.3182   [111 this run, 207.4s/dataset]
+sim_id 612: ml aipw=0.3238 tmle=0.3253 scaipw=0.3179   [112 this run, 206.8s/dataset]
+sim_id 613: ml aipw=0.3583 tmle=0.3631 scaipw=0.3562   [113 this run, 206.3s/dataset]
+sim_id 614: ml aipw=0.3367 tmle=0.3394 scaipw=0.3312   [114 this run, 205.8s/dataset]
+sim_id 615: ml aipw=0.3354 tmle=0.3430 scaipw=0.5596   [115 this run, 205.3s/dataset]
+sim_id 616: ml aipw=0.3654 tmle=0.3658 scaipw=0.3651   [116 this run, 204.7s/dataset]
+sim_id 617: ml aipw=0.3317 tmle=0.3352 scaipw=0.4228   [117 this run, 204.2s/dataset]
+sim_id 618: ml aipw=0.3615 tmle=0.3658 scaipw=0.3339   [118 this run, 203.7s/dataset]
+sim_id 619: ml aipw=0.3310 tmle=0.3358 scaipw=0.2066   [119 this run, 203.2s/dataset]
+sim_id 620: ml aipw=0.3779 tmle=0.3789 scaipw=0.4373   [120 this run, 202.8s/dataset]
+sim_id 621: ml aipw=0.3426 tmle=0.3484 scaipw=0.4364   [121 this run, 202.3s/dataset]
+did not converge
+sim_id 622: ml aipw=0.3289 tmle=0.3309 scaipw=0.3532   [122 this run, 201.8s/dataset]
+sim_id 623: ml aipw=0.3441 tmle=0.3457 scaipw=0.3568   [123 this run, 201.4s/dataset]
+sim_id 624: ml aipw=0.3126 tmle=0.3246 scaipw=0.4046   [124 this run, 200.9s/dataset]
+sim_id 625: ml aipw=0.3069 tmle=0.3215 scaipw=0.3331   [125 this run, 200.5s/dataset]
+sim_id 626: ml aipw=0.3617 tmle=0.3684 scaipw=0.3653   [126 this run, 200.0s/dataset]
+sim_id 627: ml aipw=0.3592 tmle=0.3616 scaipw=0.3962   [127 this run, 199.6s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 2 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 3 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 4 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    FALLBACK: logistic regression used for this single nuisance fit (super learner failed all attempts)
+sim_id 628: ml aipw=0.3072 tmle=0.3248 scaipw=0.3241   [128 this run, 199.1s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+sim_id 629: ml aipw=0.3299 tmle=0.3305 scaipw=0.3214   [129 this run, 198.7s/dataset]
+sim_id 630: ml aipw=0.3273 tmle=0.3296 scaipw=0.2690   [130 this run, 198.3s/dataset]
+sim_id 631: ml aipw=0.3588 tmle=0.3627 scaipw=0.3845   [131 this run, 197.9s/dataset]
+sim_id 632: ml aipw=0.3169 tmle=0.3225 scaipw=0.3032   [132 this run, 197.6s/dataset]
+sim_id 633: ml aipw=0.3764 tmle=0.3796 scaipw=0.3729   [133 this run, 197.5s/dataset]
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 2 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+    fit retry 1 (row-shuffled) after: OptimizationError: PIRLS optimization has diverged.
+Try increasing regularization, or specifying an initial value for self.coef_
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+did not converge
+sim_id 634: ml aipw=0.3257 tmle=0.3278 scaipw=0.3063   [134 this run, 197.5s/dataset]
+sim_id 635: ml aipw=0.3519 tmle=0.3556 scaipw=0.3443   [135 this run, 197.6s/dataset]
+sim_id 636: ml aipw=0.3397 tmle=0.3425 scaipw=0.3571   [136 this run, 197.6s/dataset]
